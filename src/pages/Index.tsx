@@ -21,7 +21,7 @@ import {
   Users,
 } from "lucide-react";
 import tilingImage from "@/assets/service-tiling.jpg";
-import carpentryImage from "@/assets/service-carpentry.jpg";
+import paintingImage from "@/assets/service-painting.jpg";
 import deckingImage from "@/assets/service-decking.jpg";
 import housingImage from "@/assets/project-housing.jpg";
 
@@ -39,10 +39,10 @@ const Index = () => {
       image: tilingImage,
     },
     {
-      title: "Carpentry",
-      description: "Custom woodwork, structural carpentry, and finishing for all your construction needs.",
-      icon: Hammer,
-      image: carpentryImage,
+      title: "Painting",
+      description: "Professional painting services for interior and exterior applications with premium quality finishes.",
+      icon: PaintBucket,
+      image: paintingImage,
     },
     {
       title: "Decking & Flooring",
