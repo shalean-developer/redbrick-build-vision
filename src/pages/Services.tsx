@@ -11,9 +11,13 @@ import {
   Droplets,
   PaintBucket,
 } from "lucide-react";
+import constructionImage from "@/assets/service-construction.jpg";
 import tilingImage from "@/assets/service-tiling.jpg";
 import paintingImage from "@/assets/service-painting.jpg";
 import deckingImage from "@/assets/service-decking.jpg";
+import pavingImage from "@/assets/service-paving.jpg";
+import waterproofingImage from "@/assets/service-waterproofing.jpg";
+import renovationsImage from "@/assets/service-renovations.jpg";
 
 const Services = () => {
   const services = [
@@ -21,6 +25,7 @@ const Services = () => {
       title: "Construction",
       description: "Comprehensive construction services for residential and commercial projects. From initial planning to final execution, we manage every aspect of the building process with precision and expertise.",
       icon: Construction,
+      image: constructionImage,
     },
     {
       title: "Tiling",
@@ -44,16 +49,19 @@ const Services = () => {
       title: "Paving",
       description: "Professional paving services for driveways, walkways, patios, and outdoor areas. We offer various materials and patterns to enhance your property's curb appeal and functionality.",
       icon: Wrench,
+      image: pavingImage,
     },
     {
       title: "Waterproofing",
       description: "Comprehensive waterproofing solutions to protect your property from water damage. We specialize in basement waterproofing, roof sealing, and moisture barrier installation.",
       icon: Droplets,
+      image: waterproofingImage,
     },
     {
       title: "Renovations",
       description: "Complete renovation services to transform your existing space. Whether it's a single room makeover or a whole-house renovation, we bring your vision to life with quality craftsmanship.",
       icon: PaintBucket,
+      image: renovationsImage,
     },
   ];
 

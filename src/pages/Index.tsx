@@ -20,9 +20,13 @@ import {
   Lightbulb,
   Users,
 } from "lucide-react";
+import constructionImage from "@/assets/service-construction.jpg";
 import tilingImage from "@/assets/service-tiling.jpg";
 import paintingImage from "@/assets/service-painting.jpg";
 import deckingImage from "@/assets/service-decking.jpg";
+import pavingImage from "@/assets/service-paving.jpg";
+import waterproofingImage from "@/assets/service-waterproofing.jpg";
+import renovationsImage from "@/assets/service-renovations.jpg";
 import housingImage from "@/assets/project-housing.jpg";
 
 const Index = () => {
@@ -31,6 +35,7 @@ const Index = () => {
       title: "Construction",
       description: "Complete building solutions from foundation to finish for residential and commercial projects.",
       icon: Construction,
+      image: constructionImage,
     },
     {
       title: "Tiling",
@@ -54,16 +59,19 @@ const Index = () => {
       title: "Paving",
       description: "Professional paving services for driveways, walkways, and outdoor areas.",
       icon: Wrench,
+      image: pavingImage,
     },
     {
       title: "Waterproofing",
       description: "Comprehensive waterproofing solutions to protect your property from water damage.",
       icon: Droplets,
+      image: waterproofingImage,
     },
     {
       title: "Renovations",
       description: "Transform your space with expert renovation services tailored to your vision.",
       icon: PaintBucket,
+      image: renovationsImage,
     },
   ];
 
