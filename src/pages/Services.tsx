@@ -12,7 +12,7 @@ import {
   PaintBucket,
 } from "lucide-react";
 import tilingImage from "@/assets/service-tiling.jpg";
-import carpentryImage from "@/assets/service-carpentry.jpg";
+import paintingImage from "@/assets/service-painting.jpg";
 import deckingImage from "@/assets/service-decking.jpg";
 
 const Services = () => {
@@ -29,10 +29,10 @@ const Services = () => {
       image: tilingImage,
     },
     {
-      title: "Carpentry",
-      description: "Expert carpentry services including structural framing, custom woodwork, cabinetry, and finishing. Our skilled craftsmen bring precision and artistry to every project.",
-      icon: Hammer,
-      image: carpentryImage,
+      title: "Painting",
+      description: "Professional painting services for interior and exterior applications. From residential homes to commercial buildings, we deliver flawless finishes with premium quality paints and expert techniques.",
+      icon: PaintBucket,
+      image: paintingImage,
     },
     {
       title: "Decking & Flooring",
