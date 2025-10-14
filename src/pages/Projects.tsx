@@ -4,7 +4,15 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
-import housingImage from "@/assets/project-housing.jpg";
+import housing1Image from "@/assets/project-housing-1.jpg";
+import housing2Image from "@/assets/project-housing-2.jpg";
+import housing3Image from "@/assets/project-housing-3.jpg";
+import commercial1Image from "@/assets/project-commercial-1.jpg";
+import commercial2Image from "@/assets/project-commercial-2.jpg";
+import infrastructure1Image from "@/assets/project-infrastructure-1.jpg";
+import infrastructure2Image from "@/assets/project-infrastructure-2.jpg";
+import infrastructure3Image from "@/assets/project-infrastructure-3.jpg";
+import renovation1Image from "@/assets/project-renovation-1.jpg";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -16,63 +24,63 @@ const Projects = () => {
       title: "Modern Residential Development",
       location: "Gauteng Province",
       date: "December 2024",
-      image: housingImage,
+      image: housing1Image,
       category: "Housing",
     },
     {
       title: "Commercial Office Complex",
       location: "Western Cape",
       date: "November 2024",
-      image: housingImage,
+      image: commercial1Image,
       category: "Commercial",
     },
     {
       title: "Infrastructure Upgrade Project",
       location: "KwaZulu-Natal",
       date: "October 2024",
-      image: housingImage,
+      image: infrastructure1Image,
       category: "Infrastructure",
     },
     {
       title: "Luxury Home Renovation",
       location: "Western Cape",
       date: "September 2024",
-      image: housingImage,
+      image: renovation1Image,
       category: "Renovations",
     },
     {
       title: "Affordable Housing Development",
       location: "Eastern Cape",
       date: "August 2024",
-      image: housingImage,
+      image: housing2Image,
       category: "Housing",
     },
     {
       title: "School Building Project",
       location: "Free State",
       date: "July 2024",
-      image: housingImage,
+      image: infrastructure2Image,
       category: "Infrastructure",
     },
     {
       title: "Restaurant Renovation",
       location: "Gauteng Province",
       date: "June 2024",
-      image: housingImage,
+      image: commercial2Image,
       category: "Commercial",
     },
     {
       title: "Community Center Construction",
       location: "KwaZulu-Natal",
       date: "May 2024",
-      image: housingImage,
+      image: infrastructure3Image,
       category: "Infrastructure",
     },
     {
       title: "Residential Complex Extension",
       location: "Western Cape",
       date: "April 2024",
-      image: housingImage,
+      image: housing3Image,
       category: "Housing",
     },
   ];
