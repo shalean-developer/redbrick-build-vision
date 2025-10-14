@@ -10,6 +10,7 @@ import {
   Wrench,
   Droplets,
   PaintBucket,
+  Pipette,
 } from "lucide-react";
 import constructionImage from "@/assets/service-construction.jpg";
 import tilingImage from "@/assets/service-tiling.jpg";
@@ -18,6 +19,7 @@ import deckingImage from "@/assets/service-decking.jpg";
 import pavingImage from "@/assets/service-paving.jpg";
 import waterproofingImage from "@/assets/service-waterproofing.jpg";
 import renovationsImage from "@/assets/service-renovations.jpg";
+import plumbingImage from "@/assets/service-plumbing.jpg";
 
 const Services = () => {
   const services = [
@@ -62,6 +64,12 @@ const Services = () => {
       description: "Complete renovation services to transform your existing space. Whether it's a single room makeover or a whole-house renovation, we bring your vision to life with quality craftsmanship.",
       icon: PaintBucket,
       image: renovationsImage,
+    },
+    {
+      title: "Plumbing",
+      description: "Expert plumbing services for new installations, repairs, and maintenance. From pipe installations and drainage systems to fixture replacements and leak detection, we handle all your plumbing needs.",
+      icon: Pipette,
+      image: plumbingImage,
     },
   ];
 

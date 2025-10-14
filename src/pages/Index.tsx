@@ -19,6 +19,7 @@ import {
   Target,
   Lightbulb,
   Users,
+  Pipette,
 } from "lucide-react";
 import constructionImage from "@/assets/service-construction.jpg";
 import tilingImage from "@/assets/service-tiling.jpg";
@@ -27,6 +28,7 @@ import deckingImage from "@/assets/service-decking.jpg";
 import pavingImage from "@/assets/service-paving.jpg";
 import waterproofingImage from "@/assets/service-waterproofing.jpg";
 import renovationsImage from "@/assets/service-renovations.jpg";
+import plumbingImage from "@/assets/service-plumbing.jpg";
 import housingImage from "@/assets/project-housing.jpg";
 
 const Index = () => {
@@ -72,6 +74,12 @@ const Index = () => {
       description: "Transform your space with expert renovation services tailored to your vision.",
       icon: PaintBucket,
       image: renovationsImage,
+    },
+    {
+      title: "Plumbing",
+      description: "Professional plumbing services for installations, repairs, and maintenance of water systems.",
+      icon: Pipette,
+      image: plumbingImage,
     },
   ];
 
