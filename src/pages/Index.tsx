@@ -30,6 +30,9 @@ import waterproofingImage from "@/assets/service-waterproofing.jpg";
 import renovationsImage from "@/assets/service-renovations.jpg";
 import plumbingImage from "@/assets/service-plumbing.jpg";
 import housingImage from "@/assets/project-housing.jpg";
+import residentialImage from "@/assets/project-residential.jpg";
+import commercialImage from "@/assets/project-commercial.jpg";
+import renovationImage from "@/assets/project-renovation.jpg";
 
 const Index = () => {
   const services = [
@@ -190,21 +193,21 @@ const Index = () => {
               title="Residential Development"
               location="Gauteng"
               date="Dec 2024"
-              image={housingImage}
+              image={residentialImage}
               category="Housing"
             />
             <ProjectCard
               title="Commercial Complex"
               location="Western Cape"
               date="Nov 2024"
-              image={housingImage}
+              image={commercialImage}
               category="Infrastructure"
             />
             <ProjectCard
               title="Home Renovation"
               location="KwaZulu-Natal"
               date="Oct 2024"
-              image={housingImage}
+              image={renovationImage}
               category="Renovations"
             />
           </div>
