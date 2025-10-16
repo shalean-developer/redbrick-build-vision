@@ -5,63 +5,59 @@ import ValueCard from "@/components/ValueCard";
 import TeamMember from "@/components/TeamMember";
 import { Shield, Award, Target, Lightbulb, Users, TrendingUp, CheckCircle } from "lucide-react";
 import teamImage from "@/assets/about-team.jpg";
-
 const About = () => {
-  const values = [
-    {
-      title: "Safety",
-      description: "We prioritize the safety of our team, clients, and communities in every project we undertake.",
-      icon: Shield,
-    },
-    {
-      title: "Excellence",
-      description: "Committed to delivering superior quality and exceeding expectations in all our work.",
-      icon: Award,
-    },
-    {
-      title: "Integrity",
-      description: "Building trust through honest communication, transparency, and ethical business practices.",
-      icon: Target,
-    },
-    {
-      title: "Innovation",
-      description: "Embracing new technologies and methods to continuously improve our services and efficiency.",
-      icon: Lightbulb,
-    },
-    {
-      title: "Accountability",
-      description: "Taking full responsibility for our commitments and delivering on our promises.",
-      icon: Users,
-    },
-    {
-      title: "Potential",
-      description: "Investing in our people's growth and unlocking their full potential through development.",
-      icon: TrendingUp,
-    },
-    {
-      title: "Results",
-      description: "Focused on achieving measurable outcomes and creating lasting value for our clients.",
-      icon: CheckCircle,
-    },
-  ];
-
-  const team = [
-    { name: "Bishop", role: "Site Manager", phone: "+27 82 758 7466" },
-    { name: "Sam", role: "Site Manager", phone: "+27 68 594 3091" },
-    { name: "Lehan Lynch", role: "Operations Manager", phone: "+27 72 674 6457" },
-    { name: "Duane Chiles", role: "Supervisor" },
-    { name: "Stuart Chiles", role: "Supervisor" },
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const values = [{
+    title: "Safety",
+    description: "We prioritize the safety of our team, clients, and communities in every project we undertake.",
+    icon: Shield
+  }, {
+    title: "Excellence",
+    description: "Committed to delivering superior quality and exceeding expectations in all our work.",
+    icon: Award
+  }, {
+    title: "Integrity",
+    description: "Building trust through honest communication, transparency, and ethical business practices.",
+    icon: Target
+  }, {
+    title: "Innovation",
+    description: "Embracing new technologies and methods to continuously improve our services and efficiency.",
+    icon: Lightbulb
+  }, {
+    title: "Accountability",
+    description: "Taking full responsibility for our commitments and delivering on our promises.",
+    icon: Users
+  }, {
+    title: "Potential",
+    description: "Investing in our people's growth and unlocking their full potential through development.",
+    icon: TrendingUp
+  }, {
+    title: "Results",
+    description: "Focused on achieving measurable outcomes and creating lasting value for our clients.",
+    icon: CheckCircle
+  }];
+  const team = [{
+    name: "Bishop",
+    role: "Site Manager",
+    phone: "+27 82 758 7466"
+  }, {
+    name: "Sam",
+    role: "Site Manager",
+    phone: "+27 68 594 3091"
+  }, {
+    name: "Lehan Lynch",
+    role: "Operations Manager",
+    phone: "+27 72 674 6457"
+  }, {
+    name: "Duane Chiles",
+    role: "Supervisor"
+  }, {
+    name: "Stuart Chiles",
+    role: "Supervisor"
+  }];
+  return <div className="min-h-screen">
       <Navbar />
       
-      <Hero
-        title="About Team Edlick"
-        subtitle="Building South Africa's Future with Expertise and Dedication"
-        height="medium"
-      />
+      <Hero title="About Team Edlick" subtitle="Building South Africa's Future with Expertise and Dedication" height="medium" />
 
       {/* Company Overview */}
       <section className="py-20">
@@ -85,11 +81,7 @@ const About = () => {
               </p>
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-elevated">
-              <img
-                src={teamImage}
-                alt="Team Edlick team meeting"
-                className="w-full h-full object-cover"
-              />
+              <img src={teamImage} alt="Team Edlick team meeting" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -127,34 +119,17 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <ValueCard key={index} {...value} />
-            ))}
+            {values.map((value, index) => <ValueCard key={index} {...value} />)}
           </div>
         </div>
       </section>
 
       {/* Leadership Team */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="mb-4">Meet Our Leadership</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experienced professionals dedicated to excellence in construction
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-6xl mx-auto">
-            {team.map((member, index) => (
-              <TeamMember key={index} {...member} />
-            ))}
-          </div>
-        </div>
+        
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
