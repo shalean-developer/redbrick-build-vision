@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-secondary text-secondary-foreground">
+  return <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -71,14 +69,7 @@ const Footer = () => {
           </div>
 
           {/* Banking Info */}
-          <div>
-            <h4 className="font-semibold mb-4">Banking Details</h4>
-            <div className="text-sm space-y-1 opacity-90">
-              <p><strong>Bank:</strong> Nedbank</p>
-              <p><strong>Account:</strong> 1211383040</p>
-              <p><strong>Branch:</strong> 10690900</p>
-            </div>
-          </div>
+          
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm opacity-75">
@@ -89,8 +80,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
