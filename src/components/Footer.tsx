@@ -42,6 +42,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/contact" className="hover:text-primary transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
                 <Link to="/careers" className="hover:text-primary transition-colors">
                   Careers
                 </Link>
@@ -74,9 +79,9 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm opacity-75">
           <p>
-            <Link to="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             {" | "}
-            <Link to="#" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+            <Link to="/terms-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>
           </p>
         </div>
       </div>
