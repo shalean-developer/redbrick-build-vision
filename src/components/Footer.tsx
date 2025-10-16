@@ -7,7 +7,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">
-              <span className="text-primary">TEAM</span> EDLICK
+              TEAM EDLICK
             </h3>
             <p className="text-sm mb-4 opacity-90">
               Building South Africa's Future with Integrity and Innovation.
