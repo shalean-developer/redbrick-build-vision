@@ -58,7 +58,7 @@ const Footer = () => {
                 <div>
                   <p>Bishop: +27 82 758 7466</p>
                   <p>Sam: +27 68 594 3091</p>
-                  <p>Lehan: +27 72 674 6457</p>
+                  
                 </div>
               </li>
               <li className="flex items-start gap-2">
