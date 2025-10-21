@@ -88,19 +88,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Building2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2">Banking Details</h3>
-                    <div className="text-muted-foreground space-y-1">
-                      <p><strong>Bank:</strong> Nedbank</p>
-                      <p><strong>Account:</strong> 1211383040</p>
-                      <p><strong>Branch Code:</strong> 10690900</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
 
               {/* Map Embed */}
