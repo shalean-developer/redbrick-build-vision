@@ -8,17 +8,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Building2 } from "lucide-react";
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: "",
+    message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -27,31 +27,27 @@ const Contact = () => {
     setTimeout(() => {
       toast({
         title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
+        description: "We'll get back to you as soon as possible."
       });
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      });
       setIsSubmitting(false);
     }, 1000);
   };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
       
-      <Hero
-        title="Contact Us"
-        subtitle="Let's Start Building Your Vision Together"
-        height="medium"
-      />
+      <Hero title="Contact Us" subtitle="Let's Start Building Your Vision Together" height="medium" />
 
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -74,7 +70,7 @@ const Contact = () => {
                     <div className="space-y-1 text-muted-foreground">
                       <p>Bishop: <a href="tel:+27827587466" className="hover:text-primary">+27 82 758 7466</a></p>
                       <p>Sam: <a href="tel:+27685943091" className="hover:text-primary">+27 68 594 3091</a></p>
-                      <p>Lehan Lynch: <a href="tel:+27726746457" className="hover:text-primary">+27 72 674 6457</a></p>
+                      
                     </div>
                   </div>
                 </div>
@@ -109,16 +105,9 @@ const Contact = () => {
 
               {/* Map Embed */}
               <div className="mt-8 rounded-lg overflow-hidden shadow-card h-64">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.5897488894873!2d18.41932!3d-33.905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU0JzE4LjAiUyAxOMKwMjUnMDkuNiJF!5e0!3m2!1sen!2sza!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Team Edlick Office Location"
-                />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.5897488894873!2d18.41932!3d-33.905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU0JzE4LjAiUyAxOMKwMjUnMDkuNiJF!5e0!3m2!1sen!2sza!4v1234567890" width="100%" height="100%" style={{
+                border: 0
+              }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Team Edlick Office Location" />
               </div>
             </div>
 
@@ -129,64 +118,25 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="John Doe"
-                      className="mt-2"
-                    />
+                    <Input id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="mt-2" />
                   </div>
 
                   <div>
                     <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="john@example.com"
-                      className="mt-2"
-                    />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="mt-2" />
                   </div>
 
                   <div>
                     <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+27 82 123 4567"
-                      className="mt-2"
-                    />
+                    <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+27 82 123 4567" className="mt-2" />
                   </div>
 
                   <div>
                     <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="Tell us about your project..."
-                      rows={6}
-                      className="mt-2"
-                    />
+                    <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required placeholder="Tell us about your project..." rows={6} className="mt-2" />
                   </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full"
-                    size="lg"
-                    disabled={isSubmitting}
-                  >
+                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
@@ -197,8 +147,6 @@ const Contact = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
