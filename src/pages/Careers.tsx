@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -69,6 +70,16 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Careers | Join Team Edlick Construction - Job Opportunities</title>
+        <meta name="description" content="Join Team Edlick Construction. View current job openings for site managers, carpenters, and supervisors. Build your career with professional development and growth opportunities." />
+        <meta name="keywords" content="construction jobs South Africa, careers, site manager jobs, carpenter jobs, construction supervisor, employment opportunities" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/careers" />
+        <meta property="og:title" content="Careers | Join Team Edlick Construction" />
+        <meta property="og:description" content="Join Team Edlick Construction. View current job openings and build your career with professional development opportunities." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/careers" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       <Hero

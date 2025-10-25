@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -45,6 +46,16 @@ const Contact = () => {
     });
   };
   return <div className="min-h-screen">
+      <Helmet>
+        <title>Contact Us | Team Edlick Construction - Get a Free Quote</title>
+        <meta name="description" content="Contact Team Edlick Construction for a free consultation. Call +27 68 594 3091 or +27 82 758 7466. Located at The Watershed, Waterfront, South Africa." />
+        <meta name="keywords" content="contact Team Edlick, construction quote, free consultation, construction services South Africa, get in touch" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/contact" />
+        <meta property="og:title" content="Contact Us | Team Edlick Construction" />
+        <meta property="og:description" content="Contact Team Edlick Construction for a free consultation. Call +27 68 594 3091 or +27 82 758 7466." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/contact" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       <Hero title="Contact Us" subtitle="Let's Start Building Your Vision Together" height="medium" />

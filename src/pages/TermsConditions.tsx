@@ -1,9 +1,16 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const TermsConditions = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Terms & Conditions | Team Edlick Construction</title>
+        <meta name="description" content="Read Team Edlick Construction's terms and conditions for our construction services, warranties, and policies." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/terms-conditions" />
+      </Helmet>
       <Navbar />
       
       <main className="flex-grow">

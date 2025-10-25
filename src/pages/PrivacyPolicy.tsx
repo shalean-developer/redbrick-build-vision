@@ -1,9 +1,16 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Privacy Policy | Team Edlick Construction</title>
+        <meta name="description" content="Read Team Edlick Construction's privacy policy. Learn how we collect, use, and protect your personal information." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/privacy-policy" />
+      </Helmet>
       <Navbar />
       
       <main className="flex-grow">

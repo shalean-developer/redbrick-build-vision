@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -55,6 +56,16 @@ const About = () => {
     role: "Supervisor"
   }];
   return <div className="min-h-screen">
+      <Helmet>
+        <title>About Us | Team Edlick Construction - Building South Africa's Future</title>
+        <meta name="description" content="Learn about Team Edlick Construction, a premier contractor operating across 5 provinces in South Africa. Discover our vision, mission, core values, and commitment to excellence." />
+        <meta name="keywords" content="about Team Edlick, construction company South Africa, our values, vision mission, construction team" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/about" />
+        <meta property="og:title" content="About Us | Team Edlick Construction" />
+        <meta property="og:description" content="Learn about Team Edlick Construction, a premier contractor operating across 5 provinces in South Africa." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/about" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       <Hero title="About Team Edlick" subtitle="Building South Africa's Future with Expertise and Dedication" height="medium" />

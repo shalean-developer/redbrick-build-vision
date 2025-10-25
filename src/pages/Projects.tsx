@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -92,6 +93,16 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Our Projects | Team Edlick Construction Portfolio - South Africa</title>
+        <meta name="description" content="View Team Edlick's completed construction projects across South Africa including housing, infrastructure, commercial, and renovation projects. 100+ projects delivered with excellence." />
+        <meta name="keywords" content="construction projects South Africa, housing projects, infrastructure development, commercial construction, renovation portfolio" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/projects" />
+        <meta property="og:title" content="Our Projects | Team Edlick Construction Portfolio" />
+        <meta property="og:description" content="View our completed construction projects across South Africa including housing, infrastructure, commercial, and renovation projects." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/projects" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       <Hero

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -75,6 +76,16 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Our Services | Team Edlick Construction - Complete Building Solutions</title>
+        <meta name="description" content="Explore Team Edlick's comprehensive construction services: building, tiling, painting, decking, paving, waterproofing, renovations, and plumbing across South Africa." />
+        <meta name="keywords" content="construction services, tiling, painting, decking, paving, waterproofing, renovations, plumbing, carpentry, South Africa" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/services" />
+        <meta property="og:title" content="Our Services | Team Edlick Construction" />
+        <meta property="og:description" content="Comprehensive construction services: building, tiling, painting, decking, paving, waterproofing, renovations, and plumbing." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/services" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       <Hero

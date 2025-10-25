@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -116,6 +117,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Team Edlick Construction | Building South Africa's Future</title>
+        <meta name="description" content="Leading construction company in South Africa specializing in housing, infrastructure, tiling, carpentry, and renovations. Operating across 5 provinces with excellence and integrity." />
+        <meta name="keywords" content="construction South Africa, building contractor, tiling services, carpentry, renovations, waterproofing, paving, decking, housing development, infrastructure" />
+        <link rel="canonical" href="https://www.team-edlick.co.za/" />
+        <meta property="og:title" content="Team Edlick Construction | Building South Africa's Future" />
+        <meta property="og:description" content="Leading construction company in South Africa specializing in housing, infrastructure, tiling, carpentry, and renovations." />
+        <meta property="og:url" content="https://www.team-edlick.co.za/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}
