@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BlogInlineCta } from "@/components/blog/BlogInlineCta";
+import { BlogPartnerReferral } from "@/components/partners/BlogPartnerReferral";
 
 type Props = { slug: string };
 
@@ -32,6 +33,7 @@ export function BlogArticleBody({ slug }: Props) {
             <li>Lift heights, datum lines, and pattern complexity</li>
             <li>Parking, access, and high-rise logistics</li>
           </ul>
+          <BlogPartnerReferral variant="shalean-cleaning" context="post-tiling" />
           <p>
             Ready to compare scope properly? Book{" "}
             <Link href="/contact" className="text-primary font-medium hover:underline">
@@ -62,6 +64,7 @@ export function BlogArticleBody({ slug }: Props) {
             whether walls move; retention baths and local authority nuances can add programme days more than raw material
             cost.
           </p>
+          <BlogPartnerReferral variant="shalean-cleaning" context="post-renovation" />
           <BlogInlineCta
             title="Book a bathroom renovation quote, Cape Town metro"
             description="One brief ties waterproofing, tiling, and plumbing sequencing so budgets don’t fracture across trades."
@@ -102,6 +105,7 @@ export function BlogArticleBody({ slug }: Props) {
             Dust sealing, water shutdowns, and noise curfews determine whether you stay in-residence. We sequence noisy work
             up-front where possible, then shift to quieter finishes.
           </p>
+          <BlogPartnerReferral variant="shalean-cleaning" context="handover" />
           <p>
             Need a programme for a multi-trade scope? Start with{" "}
             <Link href="/services/construction/cape-town" className="text-primary font-medium hover:underline">

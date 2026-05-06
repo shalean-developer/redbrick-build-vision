@@ -13,6 +13,7 @@ const staticPaths: { path: string; priority: number }[] = [
   { path: "/about", priority: 0.78 },
   { path: "/careers", priority: 0.72 },
   { path: "/blog", priority: 0.76 },
+  { path: "/partners/shalean-cleaning-services", priority: 0.62 },
   { path: "/privacy-policy", priority: 0.5 },
   { path: "/terms-conditions", priority: 0.5 },
 ];

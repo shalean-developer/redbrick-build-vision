@@ -20,6 +20,8 @@ import { locationPages } from "@/lib/locations";
 import { getMoneyPageContent } from "@/lib/service-location-content";
 import { buildPageMetadata } from "@/lib/seo";
 import { authorityTestimonials } from "@/lib/testimonials";
+import { ShaleanCleaningReferral } from "@/components/partners/ShaleanCleaningReferral";
+import { showShaleanReferralOnMoneyPage } from "@/lib/partners";
 
 export function generateStaticParams() {
   return constructionServices.flatMap((service) =>
@@ -179,6 +181,10 @@ export default async function ServiceCityPage({
               ))}
             </ol>
           </section>
+
+          {showShaleanReferralOnMoneyPage(service.slug) ? (
+            <ShaleanCleaningReferral locationName={loc.name} serviceName={service.name} />
+          ) : null}
 
           <section className="mt-14 rounded-lg bg-muted p-6" aria-labelledby="trust-heading">
             <h2 id="trust-heading" className="text-2xl font-bold mb-4">
