@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { CLIENT_AFTER_PROOF } from "@/lib/authority-showcase";
 import { gallery } from "@/lib/gallery";
 import { authorityTestimonials } from "@/lib/testimonials";
 
@@ -24,7 +25,7 @@ const PREVIEW: {
     href: "/services/renovations/cape-town",
   },
   {
-    src: "/projects/waterproofing-wet-areas-cape-town.png",
+    src: CLIENT_AFTER_PROOF,
     alt: "Waterproofing and wet-area membrane work on a Cape Town site",
     caption: "Waterproofing & wet areas",
     href: "/services/waterproofing/cape-town",

@@ -1,9 +1,12 @@
 /**
  * Authority media for service × city pages.
  *
- * Placeholders load from /public/projects/*.svg so nothing 404s.
- * Add JPGs using `expectedPath` filenames when you have real photos.
+ * Before panels stay SVG placeholders until real “before” files exist.
+ * After panel uses a client-provided on-site photo (`CLIENT_AFTER_PROOF`).
  */
+
+/** Client-provided photo used for “after” proof across service × city pages. */
+export const CLIENT_AFTER_PROOF = "/projects/waterproofing-wet-areas-cape-town.jpg";
 
 export type ShowcaseProject = {
   /** Served image (SVG placeholder until JPG exists). */
@@ -40,7 +43,7 @@ export function getAuthorityShowcase(serviceSlug: string, citySlug: string, city
       caption: `Completed ${humanService.toLowerCase()} scope with substrate checks and QA hold-points, mobilised across ${cityName}.`,
     },
     {
-      src: "/projects/placeholder-after.svg",
+      src: CLIENT_AFTER_PROOF,
       expectedPath: `${base}-2.jpg`,
       alt: `${humanService} finishes and protection, ${cityName}`,
       caption: `Finish protection, daily housekeeping, and snag discipline typical of ${cityName} estates and complexes.`,
@@ -49,10 +52,10 @@ export function getAuthorityShowcase(serviceSlug: string, citySlug: string, city
 
   const beforeAfter: BeforeAfterSet = {
     beforeSrc: "/projects/placeholder-before.svg",
-    afterSrc: "/projects/placeholder-after.svg",
+    afterSrc: CLIENT_AFTER_PROOF,
     expectedBeforePath: `${base}-before.jpg`,
     expectedAfterPath: `${base}-after.jpg`,
-    caption: `${humanService} transformation documented before handover, ${cityName}. Replace with your real before/after pair.`,
+    caption: `${humanService} transformation documented before handover, ${cityName}. After image shows a recent Cape Town metro programme.`,
   };
 
   return { projects, beforeAfter };

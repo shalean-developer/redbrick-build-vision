@@ -12,7 +12,7 @@ type Props = {
 };
 
 const BEFORE_FALLBACK = "/projects/placeholder-before.svg";
-const AFTER_FALLBACK = "/projects/placeholder-after.svg";
+const AFTER_FALLBACK = "/projects/waterproofing-wet-areas-cape-town.jpg";
 
 export function BeforeAfter({
   beforeSrc,
