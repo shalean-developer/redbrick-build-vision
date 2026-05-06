@@ -24,8 +24,8 @@ const PREVIEW: {
     href: "/services/renovations/cape-town",
   },
   {
-    src: "/projects/placeholder-after.svg",
-    alt: "Membrane and wet-area waterproofing programme",
+    src: "/projects/waterproofing-wet-areas-cape-town.png",
+    alt: "Waterproofing and wet-area membrane work on a Cape Town site",
     caption: "Waterproofing & wet areas",
     href: "/services/waterproofing/cape-town",
   },
