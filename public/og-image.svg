@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Team Edlick Construction">
+  <defs>
+    <linearGradient id="o" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#o)"/>
+  <text x="600" y="280" text-anchor="middle" fill="#ffffff" font-family="system-ui,sans-serif" font-size="56" font-weight="800">Team Edlick Construction</text>
+  <text x="600" y="345" text-anchor="middle" fill="#fecaca" font-family="system-ui,sans-serif" font-size="28">Cape Town construction · tiling · renovations</text>
+  <text x="600" y="520" text-anchor="middle" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="18">Replace with /public/og-image.jpg (1200×630) for best social previews</text>
+</svg>

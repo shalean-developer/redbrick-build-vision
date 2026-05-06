@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { BlogArticleBody } from "@/components/blog/BlogArticleBody";
+import { Button } from "@/components/ui/button";
+import { blogPosts } from "@/lib/blog";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return {};
+  return buildPageMetadata(`/blog/${slug}`, post.title, post.description, {
+    keywords: [
+      "Team Edlick",
+      "construction",
+      "South Africa",
+      "tiling",
+      "renovations",
+      "Cape Town",
+      "Western Cape",
+    ],
+  });
+}
+
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) notFound();
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <article className="flex-grow container mx-auto px-4 py-24 max-w-3xl">
+        <p className="text-sm font-medium text-primary mb-2">
+          <Link href="/blog" className="hover:underline">
+            Blog
+          </Link>
+        </p>
+        <h1 className="mb-6">{post.title}</h1>
+        <p className="text-muted-foreground text-lg mb-10">{post.description}</p>
+        <BlogArticleBody slug={slug} />
+        <div className="mt-14 rounded-xl border bg-muted/50 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p className="font-semibold text-foreground">Ready for numbers on your site?</p>
+            <p className="text-sm text-muted-foreground">We&apos;ll align trades and programme on one brief.</p>
+          </div>
+          <Button asChild>
+            <Link href="/contact">Request a quote</Link>
+          </Button>
+        </div>
+      </article>
+      <Footer />
+    </div>
+  );
+}

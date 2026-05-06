@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="After photo placeholder">
+  <rect width="960" height="640" fill="#ecfdf5"/>
+  <rect x="0" y="600" width="960" height="40" fill="#10b981" opacity="0.35"/>
+  <text x="480" y="330" text-anchor="middle" fill="#047857" font-family="system-ui,sans-serif" font-size="28" font-weight="600">After</text>
+</svg>
