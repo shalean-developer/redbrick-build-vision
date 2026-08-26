@@ -53,7 +53,7 @@ const Hero = ({
       <div className="absolute inset-0 bg-gradient-hero" />
 
       <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 text-center text-white">
-        <h1 className="mb-5 md:mb-6 animate-slide-in-up text-balance">{title}</h1>
+        <h1 className="mb-5 md:mb-6 text-balance">{title}</h1>
 
         {lead ? (
           <p className="text-base md:text-lg mb-4 max-w-2xl mx-auto opacity-[0.96] leading-relaxed animate-fade-in text-pretty">
