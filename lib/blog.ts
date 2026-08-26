@@ -19,6 +19,12 @@ export const blogPosts: BlogPostMeta[] = [
       "Plan a Cape Town repaint with Team Edlick's indicative wall-rate range, preparation variables, access factors, and quote-comparison checklist.",
   },
   {
+    slug: "paving-cost-per-square-metre-cape-town",
+    title: "Paving Cost per m² in Cape Town: What Changes the Price?",
+    description:
+      "Plan a Cape Town paving project with Team Edlick's indicative driveway-class range, base-preparation factors, drainage, edge restraint, and quote-comparison checklist.",
+  },
+  {
     slug: "bathroom-renovation-cost-south-africa",
     title: "Bathroom Renovation Costs in South Africa (Realistic Budget Bands)",
     description:
