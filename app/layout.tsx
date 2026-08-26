@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JsonLd } from "@/components/json-ld";
 import { Providers } from "./providers";
 import "./globals.css";
@@ -93,6 +94,7 @@ export default function RootLayout({
       <body className="pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-[calc(4.5rem+env(safe-area-inset-bottom))]">
         <JsonLd />
         <Providers>{children}</Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
