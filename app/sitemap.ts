@@ -19,32 +19,26 @@ const staticPaths: { path: string; priority: number }[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   const main = staticPaths.map(({ path, priority }) => ({
     url: path === "/" ? siteOrigin : `${siteOrigin}${path}`,
-    lastModified,
     changeFrequency: "monthly" as const,
     priority,
   }));
 
   const blog = blogPosts.map((post) => ({
     url: `${siteOrigin}/blog/${post.slug}`,
-    lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.68,
   }));
 
   const locations = locationPages.map((loc) => ({
     url: `${siteOrigin}/locations/${loc.city}`,
-    lastModified,
     changeFrequency: "monthly" as const,
     priority: loc.city === "cape-town" ? 0.9 : 0.75,
   }));
 
   const serviceHubs = constructionServices.map((s) => ({
     url: `${siteOrigin}/services/${s.slug}`,
-    lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.87,
   }));
@@ -52,7 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceLocations = constructionServices.flatMap((s) =>
     locationPages.map((loc) => ({
       url: `${siteOrigin}/services/${s.slug}/${loc.city}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.92,
     })),
