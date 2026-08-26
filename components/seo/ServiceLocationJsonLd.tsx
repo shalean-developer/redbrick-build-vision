@@ -19,6 +19,7 @@ type Props = {
 
 export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }: Props) {
   const pageUrl = `${siteOrigin}${path}`;
+  const organizationId = `${siteOrigin}/#organization`;
 
   const areaServed =
     cityName === "Cape Town"
@@ -47,7 +48,7 @@ export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }
   const graph: Record<string, unknown>[] = [
     {
       "@type": "GeneralContractor",
-      "@id": `${pageUrl}#contractor`,
+      "@id": organizationId,
       name: siteName,
       url: siteOrigin,
       description: `${siteName} provides ${serviceName} in ${cityName} and surrounding areas, South Africa.`,
@@ -74,7 +75,7 @@ export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }
       about: {
         "@type": "Service",
         name: `${serviceName} in ${cityName}`,
-        provider: { "@id": `${pageUrl}#contractor` },
+        provider: { "@id": organizationId },
       },
     },
   ];
