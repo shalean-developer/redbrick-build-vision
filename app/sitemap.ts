@@ -8,6 +8,7 @@ const staticPaths: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   { path: "/services", priority: 0.88 },
   { path: "/locations", priority: 0.86 },
+  { path: "/locations/bellville", priority: 0.78 },
   { path: "/projects", priority: 0.82 },
   { path: "/contact", priority: 0.84 },
   { path: "/about", priority: 0.78 },
