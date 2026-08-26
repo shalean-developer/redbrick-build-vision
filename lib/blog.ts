@@ -13,6 +13,12 @@ export const blogPosts: BlogPostMeta[] = [
       "Break down supply-and-fix tiling brackets, what moves price per m², and when waterproofing changes your quote.",
   },
   {
+    slug: "painting-cost-cape-town",
+    title: "Painting Cost in Cape Town: What Changes Your Quote?",
+    description:
+      "Plan a Cape Town repaint with Team Edlick's indicative wall-rate range, preparation variables, access factors, and quote-comparison checklist.",
+  },
+  {
     slug: "bathroom-renovation-cost-south-africa",
     title: "Bathroom Renovation Costs in South Africa (Realistic Budget Bands)",
     description:
