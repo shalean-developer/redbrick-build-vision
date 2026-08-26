@@ -15,6 +15,7 @@ const guideSlugsByService: Record<string, string[]> = {
   waterproofing: ["bathroom-renovation-cost-south-africa", "tiling-mistakes-to-avoid"],
   construction: ["how-long-does-renovation-take", "bathroom-renovation-cost-south-africa"],
   "decking-flooring": ["best-flooring-options-south-africa"],
+  painting: ["painting-cost-cape-town"],
 };
 
 export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityName }: Props) {
