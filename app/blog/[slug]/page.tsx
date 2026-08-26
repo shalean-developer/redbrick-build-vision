@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BlogArticleBody } from "@/components/blog/BlogArticleBody";
+import { PaintingCostCapeTownBody } from "@/components/blog/PaintingCostCapeTownBody";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog";
 import { buildPageMetadata } from "@/lib/seo";
@@ -85,7 +86,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         <h1 className="mb-4">{post.title}</h1>
         <p className="text-sm text-muted-foreground mb-6">By {siteName}</p>
         <p className="text-muted-foreground text-lg mb-10">{post.description}</p>
-        <BlogArticleBody slug={slug} />
+        {slug === "painting-cost-cape-town" ? <PaintingCostCapeTownBody /> : <BlogArticleBody slug={slug} />}
         <div className="mt-14 rounded-xl border bg-muted/50 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <p className="font-semibold text-foreground">Ready for numbers on your site?</p>
