@@ -28,9 +28,7 @@ export function ServiceHubJsonLd({ path, serviceName, description }: Props) {
       name: `${serviceName} services`,
       serviceType: serviceName,
       provider: {
-        "@type": "Organization",
-        name: siteName,
-        url: siteOrigin,
+        "@id": `${siteOrigin}/#organization`,
       },
       areaServed: {
         "@type": "City",
