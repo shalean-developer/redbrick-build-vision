@@ -25,18 +25,18 @@ const proofForCity: Record<
   "cape-town": [
     {
       src: "/assets/service-tiling.png",
-      alt: "Recent bathroom and floor tiling work in Claremont, Cape Town",
-      caption: "Tiling — Claremont & southern suburbs",
+      alt: "Bathroom and floor tiling service example for Cape Town properties",
+      caption: "Tiling — bathrooms, kitchens, floors & wet areas",
     },
     {
       src: "/assets/service-renovations.png",
-      alt: "Renovation programme on a residential property in Sea Point, Cape Town",
-      caption: "Renovations — Atlantic Seaboard corridor",
+      alt: "Residential renovation service example for Cape Town homes",
+      caption: "Renovations — residential upgrades & coordinated trades",
     },
     {
       src: "/assets/service-paving.png",
-      alt: "Outdoor paving and driveway work in Bellville, Cape Town",
-      caption: "Paving — northern suburbs & Bellville",
+      alt: "Outdoor paving and driveway service example for Cape Town properties",
+      caption: "Paving — driveways, walkways & outdoor areas",
     },
   ],
 };
@@ -152,9 +152,9 @@ export function LocationCityHub({ loc, services }: Props) {
 
       <section className="py-14 md:py-16 bg-muted/50 border-b border-border/60">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3">Recent projects in {loc.name}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3">Common project scopes in {loc.name}</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            Representative Cape Town metro scopes. See the full portfolio or open a service hub for more proof.
+            These are representative service categories, not a completed-project log. For documented work, visit our project portfolio.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {proof.map((item) => (
@@ -177,7 +177,7 @@ export function LocationCityHub({ loc, services }: Props) {
           </div>
           <p className="text-center mt-10">
             <Button asChild variant="outline" size="lg" className="font-semibold">
-              <Link href="/projects">View all projects</Link>
+              <Link href="/projects">View project portfolio</Link>
             </Button>
           </p>
         </div>
@@ -195,6 +195,50 @@ export function LocationCityHub({ loc, services }: Props) {
           </p>
         </div>
       </section>
+
+      {loc.city === "cape-town" ? (
+        <section className="py-14 md:py-16 bg-muted/40 border-b border-border/60">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="rounded-xl border bg-background p-7 shadow-card">
+                <h2 className="text-2xl font-bold mb-4">What affects construction costs in Cape Town?</h2>
+                <p className="text-muted-foreground leading-relaxed mb-5">
+                  Cape Town pricing can move quickly when access, substrate condition, coastal exposure, estate rules, or multi-trade sequencing changes the programme.
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground space-y-2">
+                  <li>Site access, parking, lifts, scaffolding, and working-hour restrictions</li>
+                  <li>Moisture damage, salt exposure, cracks, or substrate preparation before finishes</li>
+                  <li>Material specification, tile size, waterproofing systems, and finish level</li>
+                  <li>Whether plumbing, electrical, tiling, painting, and making-good must be sequenced together</li>
+                </ul>
+                <p className="mt-5 text-sm text-muted-foreground">
+                  For trade-specific pricing context, see our{" "}
+                  <Link href="/services/tiling/cape-town" className="text-primary font-medium hover:underline">tiling</Link>,{" "}
+                  <Link href="/services/renovations/cape-town" className="text-primary font-medium hover:underline">renovation</Link>, and{" "}
+                  <Link href="/services/waterproofing/cape-town" className="text-primary font-medium hover:underline">waterproofing</Link> guides.
+                </p>
+              </div>
+
+              <div className="rounded-xl border bg-background p-7 shadow-card">
+                <h2 className="text-2xl font-bold mb-4">What to send for a faster Cape Town quote</h2>
+                <p className="text-muted-foreground leading-relaxed mb-5">
+                  A clear first brief helps us identify the right trade sequence and reduces provisional allowances.
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground space-y-2">
+                  <li>Suburb and property type</li>
+                  <li>Photos or drawings showing the affected areas</li>
+                  <li>Approximate dimensions or quantities where known</li>
+                  <li>Your preferred start window and any access or estate restrictions</li>
+                  <li>Whether materials are already selected or still need specification</li>
+                </ul>
+                <p className="mt-5 text-sm text-muted-foreground">
+                  You can send the brief through our <Link href="/contact" className="text-primary font-medium hover:underline">quote form</Link> or WhatsApp.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="py-14 md:py-16 bg-muted/40 border-b border-border/60">
         <div className="container mx-auto px-4 max-w-5xl text-center">
