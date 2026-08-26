@@ -17,6 +17,7 @@ const guideSlugsByService: Record<string, string[]> = {
   "decking-flooring": ["best-flooring-options-south-africa", "paving-cost-per-square-metre-cape-town"],
   painting: ["painting-cost-cape-town"],
   paving: ["paving-cost-per-square-metre-cape-town", "best-flooring-options-south-africa"],
+  plumbing: ["plumbing-cost-cape-town", "bathroom-renovation-cost-south-africa"],
 };
 
 export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityName }: Props) {
