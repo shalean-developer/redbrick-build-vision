@@ -10,7 +10,8 @@ const organizationJsonLd = {
   address: {
     "@type": "PostalAddress",
     streetAddress: "The Watershed, D03 Dock Road",
-    addressLocality: "Waterfront",
+    addressLocality: "Cape Town",
+    addressRegion: "Western Cape",
     addressCountry: "ZA",
   },
   contactPoint: [
@@ -29,7 +30,6 @@ const organizationJsonLd = {
       availableLanguage: ["English"],
     },
   ],
-  sameAs: [] as string[],
 };
 
 export function JsonLd() {

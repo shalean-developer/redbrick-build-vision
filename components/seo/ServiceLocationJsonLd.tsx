@@ -3,7 +3,7 @@ import { siteName, siteOrigin } from "@/lib/site";
 const postalAddress = {
   "@type": "PostalAddress" as const,
   streetAddress: "The Watershed, D03 Dock Road",
-  addressLocality: "Waterfront",
+  addressLocality: "Cape Town",
   addressRegion: "Western Cape",
   addressCountry: "ZA",
 };
@@ -50,18 +50,18 @@ export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }
       "@id": `${pageUrl}#contractor`,
       name: siteName,
       url: siteOrigin,
-      description: `${siteName} provides ${serviceName} in Cape Town and surrounding areas, South Africa.`,
+      description: `${siteName} provides ${serviceName} in ${cityName} and surrounding areas, South Africa.`,
       telephone: ["+27685943091", "+27827587466"],
       address: postalAddress,
       areaServed,
-      knowsAbout: [serviceName, "Construction", "Renovations", "Cape Town"],
+      knowsAbout: [serviceName, "Construction", "Renovations", cityName],
       makesOffer: {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: `${serviceName} in Cape Town`,
+          name: `${serviceName} in ${cityName}`,
           serviceType: serviceName,
-          areaServed: "Cape Town",
+          areaServed,
         },
       },
     },
