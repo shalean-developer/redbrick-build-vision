@@ -48,6 +48,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const articlePath = `/blog/${post.slug}`;
   const articleUrl = `${siteOrigin}${articlePath}`;
   const articleImage = `${siteOrigin}${getSocialImagePath(articlePath)}`;
+  const organizationId = `${siteOrigin}/#organization`;
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -61,11 +62,13 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
     image: articleImage,
     author: {
       "@type": "Organization",
+      "@id": organizationId,
       name: siteName,
       url: siteOrigin,
     },
     publisher: {
       "@type": "Organization",
+      "@id": organizationId,
       name: siteName,
       url: siteOrigin,
       logo: {
