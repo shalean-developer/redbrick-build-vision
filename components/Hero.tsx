@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { assets } from "@/lib/assets";
@@ -39,14 +40,16 @@ const Hero = ({
   };
 
   return (
-    <section
-      className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}
-      style={{
-        backgroundImage: `url(${assets.hero})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <section className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}>
+      <Image
+        src={assets.hero}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+        aria-hidden
+      />
       <div className="absolute inset-0 bg-gradient-hero" />
 
       <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 text-center text-white">
