@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  images: {
+    qualities: [60, 75],
+  },
+
   /** Johannesburg money URLs preserved, 301 to Cape Town hubs (SEO equity consolidation). */
   async redirects() {
     return [
