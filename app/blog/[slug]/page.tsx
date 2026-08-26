@@ -10,7 +10,7 @@ import { PlumbingCostCapeTownBody } from "@/components/blog/PlumbingCostCapeTown
 import { WaterproofingCostCapeTownBody } from "@/components/blog/WaterproofingCostCapeTownBody";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, getSocialImagePath } from "@/lib/seo";
 import { siteName, siteOrigin } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -45,7 +45,9 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const articleUrl = `${siteOrigin}/blog/${post.slug}`;
+  const articlePath = `/blog/${post.slug}`;
+  const articleUrl = `${siteOrigin}${articlePath}`;
+  const articleImage = `${siteOrigin}${getSocialImagePath(articlePath)}`;
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -56,7 +58,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       "@type": "WebPage",
       "@id": articleUrl,
     },
-    image: `${siteOrigin}/og-image.svg`,
+    image: articleImage,
     author: {
       "@type": "Organization",
       name: siteName,
