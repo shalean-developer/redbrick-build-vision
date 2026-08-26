@@ -7,6 +7,7 @@ import { BlogArticleBody } from "@/components/blog/BlogArticleBody";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog";
 import { buildPageMetadata } from "@/lib/seo";
+import { siteName, siteOrigin } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -40,8 +41,40 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
+  const articleUrl = `${siteOrigin}/blog/${post.slug}`;
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url: articleUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    image: `${siteOrigin}/og-image.svg`,
+    author: {
+      "@type": "Organization",
+      name: siteName,
+      url: siteOrigin,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteName,
+      url: siteOrigin,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteOrigin}/brand/teamedlick-logo.png`,
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <Navbar />
       <article className="flex-grow container mx-auto px-4 py-24 max-w-3xl">
         <p className="text-sm font-medium text-primary mb-2">
@@ -49,7 +82,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             Blog
           </Link>
         </p>
-        <h1 className="mb-6">{post.title}</h1>
+        <h1 className="mb-4">{post.title}</h1>
+        <p className="text-sm text-muted-foreground mb-6">By {siteName}</p>
         <p className="text-muted-foreground text-lg mb-10">{post.description}</p>
         <BlogArticleBody slug={slug} />
         <div className="mt-14 rounded-xl border bg-muted/50 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
