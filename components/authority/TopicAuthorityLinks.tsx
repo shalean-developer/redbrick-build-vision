@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { blogPosts } from "@/lib/blog";
 import { getRelatedServiceSlugs, getSameServiceOtherCities, resolveService } from "@/lib/related-topics";
 
 type Props = {
@@ -8,9 +9,21 @@ type Props = {
   cityName: string;
 };
 
+const guideSlugsByService: Record<string, string[]> = {
+  tiling: ["cost-of-tiling-cape-town", "tiling-mistakes-to-avoid", "bathroom-renovation-cost-south-africa"],
+  renovations: ["bathroom-renovation-cost-south-africa", "how-long-does-renovation-take", "tiling-mistakes-to-avoid"],
+  waterproofing: ["bathroom-renovation-cost-south-africa", "tiling-mistakes-to-avoid"],
+  construction: ["how-long-does-renovation-take", "bathroom-renovation-cost-south-africa"],
+  "decking-flooring": ["best-flooring-options-south-africa"],
+};
+
 export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityName }: Props) {
   const relatedSlugs = getRelatedServiceSlugs(serviceSlug);
   const otherCities = getSameServiceOtherCities(citySlug);
+  const guideSlugs = guideSlugsByService[serviceSlug] ?? [];
+  const guides = guideSlugs
+    .map((slug) => blogPosts.find((post) => post.slug === slug))
+    .filter((post): post is (typeof blogPosts)[number] => Boolean(post));
 
   return (
     <section className="mt-14 rounded-xl border bg-muted/40 p-6" aria-labelledby="topic-links-heading">
@@ -66,6 +79,23 @@ export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityNa
           </div>
         )}
       </div>
+
+      {guides.length > 0 ? (
+        <div className="mt-8 border-t pt-6">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+            Planning guides for {serviceName.toLowerCase()}
+          </h3>
+          <ul className="space-y-2 list-none pl-0">
+            {guides.map((guide) => (
+              <li key={guide.slug}>
+                <Link href={`/blog/${guide.slug}`} className="text-primary font-medium hover:underline">
+                  {guide.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </section>
   );
 }
