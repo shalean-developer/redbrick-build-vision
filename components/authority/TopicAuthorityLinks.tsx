@@ -12,7 +12,7 @@ type Props = {
 const guideSlugsByService: Record<string, string[]> = {
   tiling: ["cost-of-tiling-cape-town", "tiling-mistakes-to-avoid", "bathroom-renovation-cost-south-africa"],
   renovations: ["bathroom-renovation-cost-south-africa", "how-long-does-renovation-take", "tiling-mistakes-to-avoid"],
-  waterproofing: ["bathroom-renovation-cost-south-africa", "tiling-mistakes-to-avoid"],
+  waterproofing: ["waterproofing-cost-cape-town", "bathroom-renovation-cost-south-africa", "tiling-mistakes-to-avoid"],
   construction: ["how-long-does-renovation-take", "bathroom-renovation-cost-south-africa"],
   "decking-flooring": ["best-flooring-options-south-africa", "paving-cost-per-square-metre-cape-town"],
   painting: ["painting-cost-cape-town"],

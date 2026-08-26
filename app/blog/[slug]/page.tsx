@@ -7,6 +7,7 @@ import { BlogArticleBody } from "@/components/blog/BlogArticleBody";
 import { PaintingCostCapeTownBody } from "@/components/blog/PaintingCostCapeTownBody";
 import { PavingCostCapeTownBody } from "@/components/blog/PavingCostCapeTownBody";
 import { PlumbingCostCapeTownBody } from "@/components/blog/PlumbingCostCapeTownBody";
+import { WaterproofingCostCapeTownBody } from "@/components/blog/WaterproofingCostCapeTownBody";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog";
 import { buildPageMetadata } from "@/lib/seo";
@@ -79,6 +80,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       <PavingCostCapeTownBody />
     ) : slug === "plumbing-cost-cape-town" ? (
       <PlumbingCostCapeTownBody />
+    ) : slug === "waterproofing-cost-cape-town" ? (
+      <WaterproofingCostCapeTownBody />
     ) : (
       <BlogArticleBody slug={slug} />
     );

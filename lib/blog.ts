@@ -31,6 +31,12 @@ export const blogPosts: BlogPostMeta[] = [
       "Understand how call-out scope, diagnostics, access, materials, making-good, and compliance requirements shape a Cape Town plumbing quote.",
   },
   {
+    slug: "waterproofing-cost-cape-town",
+    title: "Waterproofing Cost in Cape Town: What Changes the Price?",
+    description:
+      "Plan a Cape Town waterproofing scope with Team Edlick's indicative slab-system range, substrate preparation, system choice, detailing, access, and reinstatement factors.",
+  },
+  {
     slug: "bathroom-renovation-cost-south-africa",
     title: "Bathroom Renovation Costs in South Africa (Realistic Budget Bands)",
     description:
