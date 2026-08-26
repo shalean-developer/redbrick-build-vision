@@ -25,6 +25,12 @@ export const blogPosts: BlogPostMeta[] = [
       "Plan a Cape Town paving project with Team Edlick's indicative driveway-class range, base-preparation factors, drainage, edge restraint, and quote-comparison checklist.",
   },
   {
+    slug: "plumbing-cost-cape-town",
+    title: "Plumbing Cost in Cape Town: What Changes Your Quote?",
+    description:
+      "Understand how call-out scope, diagnostics, access, materials, making-good, and compliance requirements shape a Cape Town plumbing quote.",
+  },
+  {
     slug: "bathroom-renovation-cost-south-africa",
     title: "Bathroom Renovation Costs in South Africa (Realistic Budget Bands)",
     description:
