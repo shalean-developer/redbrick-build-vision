@@ -132,11 +132,10 @@ export default async function ServiceCityPage({
 
           <section className="mt-14" aria-labelledby="proof-heading">
             <h2 id="proof-heading" className="text-2xl font-bold mb-4">
-              Recent {service.name.toLowerCase()} projects near {loc.name}
+              Typical {service.name.toLowerCase()} scopes around {loc.name}
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
-              Representative mobilisation patterns, not an exhaustive project log. Photos and references supplied during
-              quoting.
+              Illustrative project types we commonly quote and plan for in the area. These examples are not presented as a log of completed projects.
             </p>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
               {money.proofProjects.map((line) => (
