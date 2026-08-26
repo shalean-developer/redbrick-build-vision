@@ -289,8 +289,8 @@ export function getMoneyPageContent(service: ConstructionService, loc: LocationP
     processSteps,
     faqs: faqsFor(service, loc.name),
     trustBullets: [
-      "100+ completed projects referenced across our portfolio",
-      "5 provinces historically serviced, programme-led site management",
+      "Cape Town and surrounding-area project focus",
+      "Programme-led site coordination across residential and commercial scopes",
       "Transparent quoting with staged milestones on larger scopes",
       "Waterfront-based operations desk, responsive scheduling",
     ],

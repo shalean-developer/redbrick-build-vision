@@ -135,9 +135,9 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6">Building with Purpose and Pride</h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Team Edlick Construction is a leading contractor operating across five provinces in South Africa. We
-              specialize in infrastructure development and housing construction, delivering projects that shape
-              communities and create lasting value. Explore{" "}
+              Team Edlick Construction provides coordinated residential and commercial construction services across
+              Cape Town and surrounding areas, with a focus on clear scope definition, practical sequencing, and durable
+              finishes. Explore{" "}
               <Link href="/services/tiling/cape-town" className="text-primary font-medium hover:underline">
                 tiling services in Cape Town
               </Link>

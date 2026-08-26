@@ -57,18 +57,15 @@ export default function AboutPage() {
             <div>
               <h2 className="mb-6">Who We Are</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Team Edlick Construction is a premier contractor operating across five provinces in South Africa.
-                With a strong focus on infrastructure development and housing construction, we have established
-                ourselves as a trusted partner for projects of all scales.
+                Team Edlick Construction is a Cape Town contractor focused on coordinated residential and commercial
+                construction, renovations, tiling, waterproofing, paving, painting, decking, flooring, and plumbing.
               </p>
               <p className="text-lg text-muted-foreground mb-4">
-                Our growth and success are built on a foundation of skilled professionals, innovative approaches, and an
-                unwavering commitment to quality. From residential developments to large-scale infrastructure projects,
-                we bring expertise, dedication, and integrity to every job.
+                Our approach is built around skilled trades, clear scope definition, practical sequencing, site safety,
+                and transparent communication from quotation through handover.
               </p>
               <p className="text-lg text-muted-foreground">
-                We don&apos;t just build structures, we create reality, shaping the communities and spaces where South
-                Africans live, work, and thrive.
+                We work to create durable spaces that serve the people who live, work, and operate in them.
               </p>
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-elevated">
@@ -90,7 +87,7 @@ export default function AboutPage() {
           <div className="text-center mb-10 max-w-2xl mx-auto">
             <h2 className="mb-3">On site across Cape Town</h2>
             <p className="text-lg text-muted-foreground">
-              Real crews, real protection of finishes, and coordinated trades on residential and commercial programmes.
+              Coordinated trades, protection of finishes, and practical site management for residential and commercial programmes.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
