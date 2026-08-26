@@ -14,8 +14,9 @@ const guideSlugsByService: Record<string, string[]> = {
   renovations: ["bathroom-renovation-cost-south-africa", "how-long-does-renovation-take", "tiling-mistakes-to-avoid"],
   waterproofing: ["bathroom-renovation-cost-south-africa", "tiling-mistakes-to-avoid"],
   construction: ["how-long-does-renovation-take", "bathroom-renovation-cost-south-africa"],
-  "decking-flooring": ["best-flooring-options-south-africa"],
+  "decking-flooring": ["best-flooring-options-south-africa", "paving-cost-per-square-metre-cape-town"],
   painting: ["painting-cost-cape-town"],
+  paving: ["paving-cost-per-square-metre-cape-town", "best-flooring-options-south-africa"],
 };
 
 export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityName }: Props) {
