@@ -45,8 +45,7 @@ const Hero = ({
         src={assets.hero}
         alt=""
         fill
-        preload
-        quality={60}
+        priority
         sizes="100vw"
         className="object-cover"
         aria-hidden
