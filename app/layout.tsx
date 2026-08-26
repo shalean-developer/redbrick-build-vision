@@ -58,15 +58,12 @@ export const metadata: Metadata = {
     images: [
       {
         url: defaultOgImagePath,
-        width: 1200,
-        height: 630,
-        alt: siteName,
+        alt: `${siteName} construction in Cape Town`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@teamedlick",
     title: `${siteName} | Cape Town Construction`,
     description: defaultDescription,
     images: [defaultOgImagePath],
@@ -90,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-ZA">
       <body className="pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-[calc(4.5rem+env(safe-area-inset-bottom))]">
         <JsonLd />
         <Providers>{children}</Providers>
