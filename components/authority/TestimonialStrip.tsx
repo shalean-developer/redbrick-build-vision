@@ -1,14 +1,13 @@
 import type { Testimonial } from "@/lib/testimonials";
 
 export function TestimonialStrip({ items }: { items: Testimonial[] }) {
+  if (!items.length) return null;
+
   return (
     <section className="mt-14" aria-labelledby="testimonials-heading">
       <h2 id="testimonials-heading" className="text-2xl font-bold mb-4">
         What clients emphasise
       </h2>
-      <p className="text-sm text-muted-foreground mb-8">
-        Replace bylines with verified names/locations when you have consent. Review structured data stays off until then.
-      </p>
       <div className="grid gap-6 md:grid-cols-3">
         {items.map((t) => (
           <blockquote
