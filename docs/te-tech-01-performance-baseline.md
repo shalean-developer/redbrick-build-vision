@@ -116,6 +116,20 @@ This closes the canonical-host configuration gap: the apex domain is the product
 
 The historical Search Console host/scheme 4xx rows should therefore be treated as stale crawl evidence pending Google re-crawl/validation, not as evidence that current domain routing is still broken.
 
+### Search Console validation status — 2026-08-27
+
+Owner-supplied Search Console screenshots confirm validation was started on **2026-08-27** for both historical exclusion buckets:
+
+- **Blocked due to other 4xx issue** — validation started; **6 affected pages**.
+- **Blocked by robots.txt** — validation started; **1 affected page** (`/book/bb93cc76-2c22-4d7e-acd3-e48fc6d2cb56`).
+
+Expected outcome:
+
+- The 4xx bucket should shrink or pass as Google re-crawls the canonical homepage/article, follows `www`/HTTP redirects, and sees `/privacy` redirect to `/privacy-policy`.
+- The historical `/book/<uuid>` URL should **not** be restored. Because current `robots.txt` does not block `/book`, Google may move that URL out of the robots bucket and classify it as a retired/not-found URL instead. That reclassification is acceptable and is not a defect.
+
+Do not add a booking route or robots rule solely to force this historical URL into an indexed state.
+
 ### GSC Wizard connector
 
 GSC Wizard MCP access could not be used directly for this baseline because the connected GSC Wizard subscription/trial is currently inactive. The owner-supplied Search Console evidence above therefore serves as the current GSC source.
@@ -153,7 +167,7 @@ Also record:
 
 ## Initial optimisation candidates (not yet authorised as fixes)
 
-1. Request Search Console validation/re-crawl for the historical 4xx/robots buckets now that `/privacy` is fixed and Vercel canonical-host routing is confirmed.
+1. Monitor the Search Console validation runs already started for the historical 4xx and robots buckets; do not restore the retired `/book/<uuid>` route.
 2. Measure the cost of the global client `Providers` wrapper and remove providers from routes that do not need them if the bundle/hydration impact is material.
 3. Check whether both toaster implementations are needed globally.
 4. Audit large project/service images and hero LCP images for correct dimensions, compression and `next/image` priority/preload behaviour.
@@ -171,6 +185,7 @@ TE-TECH-01 is complete when:
 - Search Console indexing baseline is captured;
 - the exact Search Console 4xx/robots URLs are identified and classified;
 - canonical Vercel host routing is confirmed;
+- Search Console validation has been initiated for the historical exclusion buckets;
 - field CWV values are captured from Vercel Speed Insights when accessible, or explicitly recorded as unavailable due to insufficient field traffic;
 - a synthetic Lighthouse/PageSpeed run is captured for mobile and desktop when the production domain is reachable from the measurement environment;
 - TE-TECH-02 fixes are prioritised from measured impact rather than assumption.
