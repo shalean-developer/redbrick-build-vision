@@ -4,11 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LocationCityHub } from "@/components/marketing/LocationCityHub";
 import { constructionServices } from "@/lib/construction-services";
+import { canIndexLocation } from "@/lib/location-seo";
 import { locationPages } from "@/lib/locations";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return locationPages.map((loc) => ({ city: loc.city }));
+  return locationPages.filter((loc) => canIndexLocation(loc.city)).map((loc) => ({ city: loc.city }));
 }
 
 export async function generateMetadata({
@@ -18,7 +19,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { city } = await params;
   const loc = locationPages.find((l) => l.city === city);
-  if (!loc) return {};
+  if (!loc || !canIndexLocation(city)) return {};
 
   if (city === "cape-town") {
     return buildPageMetadata(
@@ -46,7 +47,7 @@ export async function generateMetadata({
 export default async function LocationPage({ params }: { params: Promise<{ city: string }> }) {
   const { city } = await params;
   const loc = locationPages.find((l) => l.city === city);
-  if (!loc) notFound();
+  if (!loc || !canIndexLocation(city)) notFound();
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { canIndexLocation } from "@/lib/location-seo";
 import { locationPages } from "@/lib/locations";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -21,6 +22,9 @@ export const metadata: Metadata = buildPageMetadata(
 );
 
 export default function LocationsHubPage() {
+  const indexableLocations = locationPages.filter((loc) => canIndexLocation(loc.city));
+  const showBellville = canIndexLocation("bellville");
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -30,7 +34,7 @@ export default function LocationsHubPage() {
           Our location pages reflect where Team Edlick makes its services available and where we have enough local context to avoid thin, duplicated pages. Cape Town remains the main regional hub; Bellville is the first controlled suburb page.
         </p>
         <ul className="space-y-6">
-          {locationPages.map((loc) => (
+          {indexableLocations.map((loc) => (
             <li key={loc.city} className="rounded-lg border bg-card p-6 shadow-card">
               <h2 className="text-xl font-semibold mb-2">
                 <Link href={`/locations/${loc.city}`} className="text-primary hover:underline">
@@ -43,19 +47,21 @@ export default function LocationsHubPage() {
               </Button>
             </li>
           ))}
-          <li className="rounded-lg border bg-card p-6 shadow-card">
-            <h2 className="text-xl font-semibold mb-2">
-              <Link href="/locations/bellville" className="text-primary hover:underline">
-                Bellville construction services
-              </Link>
-            </h2>
-            <p className="text-muted-foreground mb-4">
-              One controlled suburb page for Team Edlick services available in Bellville, with local quoting context and Cape Town service guides. Portfolio images remain clearly labelled as Cape Town-wide rather than Bellville-specific proof.
-            </p>
-            <Button asChild variant="outline" size="sm">
-              <Link href="/locations/bellville">View Bellville</Link>
-            </Button>
-          </li>
+          {showBellville ? (
+            <li className="rounded-lg border bg-card p-6 shadow-card">
+              <h2 className="text-xl font-semibold mb-2">
+                <Link href="/locations/bellville" className="text-primary hover:underline">
+                  Bellville construction services
+                </Link>
+              </h2>
+              <p className="text-muted-foreground mb-4">
+                One controlled suburb page for Team Edlick services available in Bellville, with local quoting context and Cape Town service guides. Portfolio images remain clearly labelled as Cape Town-wide rather than Bellville-specific proof.
+              </p>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/locations/bellville">View Bellville</Link>
+              </Button>
+            </li>
+          ) : null}
         </ul>
       </main>
       <Footer />
