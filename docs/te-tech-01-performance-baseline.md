@@ -62,9 +62,35 @@ This does not prove a performance defect, but it is the clearest architecture-le
 
 Instrumentation is present in code. Field values for LCP, INP and CLS still need to be read from the Team Edlick Vercel Speed Insights dashboard after enough production traffic is available.
 
-### Google Search Console
+### Google Search Console — owner-supplied evidence, 2026-08-27
 
-GSC Wizard MCP access could not be used for this baseline because the connected GSC Wizard subscription/trial is currently inactive. Therefore no GSC clicks/impressions/indexing figures are fabricated here.
+The owner supplied Search Console screenshots for the `teamedlick.co.za` property. The Page indexing report shown is last updated **2026-08-21**, so these values predate the TE-SEO-03 merge and must be treated as a historical baseline rather than proof of the current deployment state.
+
+Observed values:
+
+- **1 indexed page**
+- **7 not indexed pages**
+- Not-indexed reasons:
+  - **Blocked due to other 4xx issue — 6 pages**
+  - **Blocked by robots.txt — 1 page**
+  - Page with redirect — 0
+  - Alternative page with proper canonical tag — 0
+  - Discovered, currently not indexed — 0
+  - Crawled, currently not indexed — 0
+- Search Console Overview shows **4 total web search clicks** in the visible period.
+- Core Web Vitals shows **No data** for both mobile and desktop.
+- Search Console Enhancements shows **No enhancements yet**.
+
+Interpretation:
+
+- The immediate technical SEO priority is to identify the exact 6 URLs in the 4xx bucket and the 1 robots-blocked URL before requesting validation.
+- Because the indexing report was last updated before the latest location/SEO merges, some or all affected URLs may be legacy routes that have since been redirected, removed, or intentionally gated. The URLs themselves must be inspected before deciding whether to restore, redirect, noindex, or leave them blocked.
+- The current `robots.ts` intentionally disallows `/api/`. If the single robots-blocked URL is an API route or another intentionally non-public URL, no fix is required; if it is a public page, that becomes a defect.
+- With only one page indexed and no CWV field data, Search Console is not yet a sufficient source for performance conclusions. Vercel Speed Insights and synthetic measurement remain necessary.
+
+### GSC Wizard connector
+
+GSC Wizard MCP access could not be used directly for this baseline because the connected GSC Wizard subscription/trial is currently inactive. The owner-supplied Search Console screenshots above therefore serve as the current GSC evidence source.
 
 ### Live synthetic test
 
@@ -99,13 +125,14 @@ Also record:
 
 ## Initial optimisation candidates (not yet authorised as fixes)
 
-1. Measure the cost of the global client `Providers` wrapper and remove providers from routes that do not need them if the bundle/hydration impact is material.
-2. Check whether both toaster implementations are needed globally.
-3. Audit large project/service images and hero LCP images for correct dimensions, compression and `next/image` priority/preload behaviour.
-4. Confirm font delivery and whether any font/CSS resources delay first render.
-5. Inspect route-level JavaScript for content pages and move avoidable client components back to server components.
-6. Validate cache headers and immutable delivery for static assets.
-7. Re-run sitemap/canonical/robots checks after every route-architecture change.
+1. **Resolve Search Console exclusions first:** inspect the 6 `other 4xx` URLs and the 1 robots-blocked URL, then classify each as intentional, redirectable, or defective.
+2. Measure the cost of the global client `Providers` wrapper and remove providers from routes that do not need them if the bundle/hydration impact is material.
+3. Check whether both toaster implementations are needed globally.
+4. Audit large project/service images and hero LCP images for correct dimensions, compression and `next/image` priority/preload behaviour.
+5. Confirm font delivery and whether any font/CSS resources delay first render.
+6. Inspect route-level JavaScript for content pages and move avoidable client components back to server components.
+7. Validate cache headers and immutable delivery for static assets.
+8. Re-run sitemap/canonical/robots checks after every route-architecture change.
 
 ## Completion gate
 
@@ -113,7 +140,8 @@ TE-TECH-01 is complete when:
 
 - code/config technical baseline is documented;
 - priority URLs are fixed as the standard benchmark set;
-- field CWV values are captured from Vercel Speed Insights when accessible;
-- GSC/indexing data is captured when the data connection is available;
-- a synthetic Lighthouse/PageSpeed run is captured for mobile and desktop;
+- Search Console indexing baseline is captured;
+- the exact Search Console 4xx/robots URLs are identified and classified;
+- field CWV values are captured from Vercel Speed Insights when accessible, or explicitly recorded as unavailable due to insufficient field traffic;
+- a synthetic Lighthouse/PageSpeed run is captured for mobile and desktop when the production domain is reachable from the measurement environment;
 - TE-TECH-02 fixes are prioritised from measured impact rather than assumption.
