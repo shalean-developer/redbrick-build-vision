@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const CONTACT_TO = "mredlick29@gmail.com";
-const CONTACT_FROM = "Team Edlick Website <noreply@shalean.co.za>";
+const CONTACT_FROM = "Team Edlick Website <noreply@teamedlick.co.za>";
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
