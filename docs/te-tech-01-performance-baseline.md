@@ -101,10 +101,20 @@ Repository evidence supporting that classification:
 
 - **Four entries are stale host/scheme variants** (`www` or `http`) and should consolidate to the HTTPS apex domain.
 - **Two URLs are current canonical content** (`/` and `/blog/tiling-mistakes-to-avoid`) and should be re-crawled as `200`.
-- **One real code-level redirect gap exists:** `/privacy` is obsolete while `/privacy-policy` is current. Add a permanent redirect `/privacy` → `/privacy-policy`.
+- **One code-level redirect gap was fixed:** `/privacy` now permanently redirects to `/privacy-policy` via TE-TECH-02A / PR #28, merged as `33b945abb51b8c68d412b8cc7eb3b598abe08933`.
 - **The `/book/<uuid>` URL is a retired legacy route**, not a public Team Edlick page that should be restored. It should stay non-indexable/retired; no new booking route should be created to satisfy this historical URL.
 
-Because the 4xx report is historical, do not request GSC validation until the `/privacy` redirect is deployed and the canonical host redirects are confirmed at the Vercel domain layer.
+### Vercel canonical-domain evidence — owner-supplied, 2026-08-27
+
+The owner supplied a Vercel Domains screenshot for the Team Edlick `redbrick-build-vision` project showing:
+
+- `teamedlick.co.za` — **Valid Configuration**, attached to **Production**.
+- `www.teamedlick.co.za` — **Valid Configuration**, configured with a **307 redirect** to `teamedlick.co.za`.
+- `redbrick-build-vision-omega.vercel.app` — **Valid Configuration**, attached to **Production**.
+
+This closes the canonical-host configuration gap: the apex domain is the production origin and the `www` host is explicitly redirected to it at the Vercel domain layer. HTTP → HTTPS on the apex was separately observed during the TE-TECH-02A verification flow.
+
+The historical Search Console host/scheme 4xx rows should therefore be treated as stale crawl evidence pending Google re-crawl/validation, not as evidence that current domain routing is still broken.
 
 ### GSC Wizard connector
 
@@ -143,7 +153,7 @@ Also record:
 
 ## Initial optimisation candidates (not yet authorised as fixes)
 
-1. Close the Search Console exclusion cleanup: deploy `/privacy` → `/privacy-policy`, confirm HTTPS/apex host consolidation, then request validation/re-crawl for current pages.
+1. Request Search Console validation/re-crawl for the historical 4xx/robots buckets now that `/privacy` is fixed and Vercel canonical-host routing is confirmed.
 2. Measure the cost of the global client `Providers` wrapper and remove providers from routes that do not need them if the bundle/hydration impact is material.
 3. Check whether both toaster implementations are needed globally.
 4. Audit large project/service images and hero LCP images for correct dimensions, compression and `next/image` priority/preload behaviour.
@@ -160,6 +170,7 @@ TE-TECH-01 is complete when:
 - priority URLs are fixed as the standard benchmark set;
 - Search Console indexing baseline is captured;
 - the exact Search Console 4xx/robots URLs are identified and classified;
+- canonical Vercel host routing is confirmed;
 - field CWV values are captured from Vercel Speed Insights when accessible, or explicitly recorded as unavailable due to insufficient field traffic;
 - a synthetic Lighthouse/PageSpeed run is captured for mobile and desktop when the production domain is reachable from the measurement environment;
 - TE-TECH-02 fixes are prioritised from measured impact rather than assumption.
