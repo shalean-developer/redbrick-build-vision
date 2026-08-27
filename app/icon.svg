@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Team Edlick</title>
+  <rect width="512" height="512" rx="72" fill="#fff"/>
+  <g transform="translate(58 130)">
+    <polygon points="0,188 126,18 170,72 82,188" fill="#000"/>
+    <polygon points="136,18 216,18 350,188 266,188" fill="#ef0000"/>
+    <polygon points="322,132 402,18 464,18 364,188" fill="#000"/>
+    <g fill="#ef0000" transform="translate(148 136)">
+      <rect width="18" height="18"/>
+      <rect x="24" width="18" height="18"/>
+      <rect y="24" width="18" height="18"/>
+      <rect x="24" y="24" width="18" height="18"/>
+    </g>
+  </g>
+</svg>
