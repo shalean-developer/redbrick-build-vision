@@ -1,38 +1,43 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { constructionServices } from "@/lib/construction-services";
 import { whatsappQuoteUrl } from "@/lib/contact";
+import { canIndexLocation } from "@/lib/location-seo";
 import { buildPageMetadata } from "@/lib/seo";
 import { siteName, siteOrigin } from "@/lib/site";
 
-const path = "/locations/bellville";
+const locationSlug = "bellville";
+const path = `/locations/${locationSlug}`;
 const pageUrl = `${siteOrigin}${path}`;
 const organizationId = `${siteOrigin}/#organization`;
 
-export const metadata: Metadata = buildPageMetadata(
-  path,
-  "Construction Services Bellville | Team Edlick",
-  "Team Edlick provides construction, tiling, painting, paving, waterproofing, renovations, plumbing, decking and flooring services in Bellville and across Cape Town. Request a scoped quote for your property.",
-  {
-    keywords: [
-      "construction Bellville",
-      "contractor Bellville",
-      "renovations Bellville",
-      "tiling Bellville",
-      "paving Bellville",
-      "waterproofing Bellville",
-      "painting Bellville",
-      "plumbing Bellville",
-    ],
-    image: "/projects/gallery/edlick-01.png",
-    imageAlt: "Team Edlick construction services available in Bellville, Cape Town",
-  },
-);
+export const metadata: Metadata = canIndexLocation(locationSlug)
+  ? buildPageMetadata(
+      path,
+      "Construction Services Bellville | Team Edlick",
+      "Team Edlick provides construction, tiling, painting, paving, waterproofing, renovations, plumbing, decking and flooring services in Bellville and across Cape Town. Request a scoped quote for your property.",
+      {
+        keywords: [
+          "construction Bellville",
+          "contractor Bellville",
+          "renovations Bellville",
+          "tiling Bellville",
+          "paving Bellville",
+          "waterproofing Bellville",
+          "painting Bellville",
+          "plumbing Bellville",
+        ],
+        image: "/projects/gallery/edlick-01.png",
+        imageAlt: "Team Edlick construction services available in Bellville, Cape Town",
+      },
+    )
+  : { robots: { index: false, follow: false } };
 
 const serviceTeasers: Record<string, string> = {
   construction: "Structural builds, extensions, repairs and coordinated finishing trades.",
@@ -104,6 +109,8 @@ const structuredData = {
 };
 
 export default function BellvilleLocationPage() {
+  if (!canIndexLocation(locationSlug)) notFound();
+
   return (
     <div className="min-h-screen flex flex-col">
       <script
