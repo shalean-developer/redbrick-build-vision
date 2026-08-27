@@ -3,9 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  /** Johannesburg money URLs preserved, 301 to Cape Town hubs (SEO equity consolidation). */
+  /** Legacy URLs preserved as permanent redirects to their canonical replacements. */
   async redirects() {
     return [
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
       {
         source: "/locations/johannesburg",
         destination: "/locations/cape-town",
