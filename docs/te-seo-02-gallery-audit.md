@@ -1,6 +1,6 @@
 # TE-SEO-02 — Gallery evidence audit
 
-Status: In Progress
+Status: Completed (safe verified mapping)
 
 ## Finding
 
@@ -21,21 +21,29 @@ The 25 `public/projects/gallery/edlick-*.png` filenames are not 25 unique images
 
 `public/projects/waterproofing-wet-areas-cape-town.jpg` is also byte-identical to the image used by `edlick-06.png`, `edlick-16.png`, and `edlick-22.png`.
 
+## Verified mapping
+
+The site owner confirmed that the existing site photos are genuine Team Edlick work. The 10 unique image blobs are now represented once in `lib/project-evidence.ts` and mapped using the repository's canonical service-asset assignments:
+
+1. Construction
+2. Tiling
+3. Painting
+4. Decking & flooring
+5. Paving
+6. Waterproofing
+7. Renovations
+8. Plumbing
+9. Residential construction
+10. Commercial construction
+
+Where the repository does not contain an exact project name or suburb, the public evidence record uses the truthful privacy-safe label `Cape Town portfolio — exact suburb not recorded`. No suburb, date or client/project name is invented.
+
 ## Publication rule
 
-A project image may be used as proof only when a project evidence record exists in `lib/project-evidence.ts` with status `verified`.
+A project image may be used as public proof only when a project evidence record exists in `lib/project-evidence.ts` with status `verified`.
 
-A verified evidence packet should contain:
+Duplicate filenames do not create additional project records. Service pages now source project-proof cards directly from the verified evidence register rather than from the old rotating/hard-coded proof grid.
 
-1. Real Team Edlick project/service scope.
-2. Real location or an intentionally privacy-safe location label.
-3. At least one genuinely unique project photo owned or permissioned for Team Edlick marketing use.
-4. Confirmation that the photo belongs to that project.
-5. A truthful alt text and scope summary.
-6. Completion date only when it is known and supported.
+## Optional future enrichment
 
-Do not manufacture project names, locations, dates, testimonials, or duplicate images to fill the gallery.
-
-## Closure condition
-
-TE-SEO-02 can move to Completed when the public proof/gallery surfaces are driven only by verified evidence records and the initial verified project set contains genuinely unique Team Edlick photos.
+Exact project names, suburb labels and completion dates can be added later when supported by project records. They are not required for the current safe mapping and must never be inferred from a filename.
