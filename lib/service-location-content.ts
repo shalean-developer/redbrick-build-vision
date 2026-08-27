@@ -16,283 +16,192 @@ export type MoneyPageContent = {
   trustBullets: string[];
 };
 
-function suburbsSnippet(loc: LocationPage): string {
-  return loc.focusSuburbs.join(", ");
-}
-
-function suburbRotationOffset(serviceSlug: string, len: number): number {
-  if (!len) return 0;
-  let h = 0;
-  for (let i = 0; i < serviceSlug.length; i++) {
-    h = (h + serviceSlug.charCodeAt(i) * (i + 3)) % 1009;
-  }
-  return h % len;
-}
-
-/** Rotates suburb order per service so combo pages don’t repeat identical suburb sequences. */
-function proofLine(loc: LocationPage, variants: string[], serviceSlug: string): string[] {
-  const subs = loc.focusSuburbs;
-  const off = suburbRotationOffset(serviceSlug, subs.length);
-  const rotated = [...subs.slice(off), ...subs.slice(0, off)];
-  return variants.map((template, i) =>
-    template.replace("{suburb}", rotated[i % rotated.length]).replace("{city}", loc.name),
-  );
-}
-
 function pricingFor(serviceSlug: string): { lead: string; range: string } {
   const map: Record<string, { lead: string; range: string }> = {
     construction: {
-      lead: "New builds and structural packages are quoted per BOQ.",
-      range: "Small alterations often start in the low hundreds of thousands (ZAR); larger shells scale with engineering and finishes.",
+      lead: "New builds and structural packages require drawings, site information and a defined scope before pricing is locked.",
+      range: "Budgets vary materially with engineering, access, finishes and programme; Team Edlick confirms project-specific pricing after scope review.",
     },
     tiling: {
-      lead: "Supply-and-fix tiling is usually priced per m² once substrates are inspected and wet-area detail is confirmed.",
-      range: "Many residential programmes land around R300–R800/m² depending on tile type, surface preparation, layout complexity, and waterproofing scope.",
+      lead: "Tiling is normally priced after substrate condition, tile format, layout and wet-area requirements are confirmed.",
+      range: "Published market ranges can help with early budgeting, but the site-specific quote is the controlling price.",
     },
     painting: {
-      lead: "Interior and exterior painting is priced per m² of measurable surface after prep scope is confirmed.",
-      range: "Many repaint programmes land near R45–R120/m² for walls (prep-dependent); facades and specialized systems can exceed this.",
+      lead: "Painting costs depend on measurable area, preparation, access, coating system and the condition of existing finishes.",
+      range: "Team Edlick prices the actual preparation and coating scope rather than relying on a single generic rate.",
     },
     "decking-flooring": {
-      lead: "Decks combine structure, drainage, and finish, priced per m² or per linear metre for balustrade runs.",
-      range: "Timber and composite assemblies commonly range R1 800–R4 500/m² all-in, driven by structure height and corrosion class.",
+      lead: "Decking and flooring quotes depend on structure, substrate, product selection, drainage and edge/detail requirements.",
+      range: "Material choice and site conditions are confirmed before a project-specific price is issued.",
     },
     paving: {
-      lead: "Paving quotes reflect excavation depth, edge restraint, and traffic class.",
-      range: "Driveway-class work regularly sits near R280–R650/m² depending on paver type and base build-up.",
+      lead: "Paving costs depend on excavation, base preparation, edge restraint, drainage, traffic loading and paver selection.",
+      range: "A site inspection is used to confirm the build-up and quote rather than assuming a standard rate.",
     },
     waterproofing: {
-      lead: "Waterproofing may be lump-sum per detail (balcony, planter) or per m² on larger trays.",
-      range: "Sheet or liquid systems on accessible slabs often trend R180–R450/m² before finishes reinstate.",
+      lead: "Waterproofing is priced around the source of ingress, preparation, detailing, membrane system and reinstatement work.",
+      range: "The repair method is confirmed after inspection so cosmetic work is not priced as a substitute for diagnosis.",
     },
     renovations: {
-      lead: "Renovations are staged, strip-out, services, wet areas, then finishes.",
-      range: "Bathroom refreshes might start from tens of thousands (ZAR) for targeted scopes; full wet-room rebuilds scale with tiling, SANWARE, and waterproofing.",
+      lead: "Renovation pricing is built from the agreed strip-out, building, services, wet-area and finish scope.",
+      range: "The final budget depends on existing conditions, selections, specialist work and programme constraints.",
     },
     plumbing: {
-      lead: "Plumbing is quoted after isolating pressure tests and access routes.",
-      range: "Call-out plus labour-and-materials packages apply; chase-and-repair work adds making-good allowances.",
+      lead: "Plumbing work is priced after the fault, access route, replacement scope and making-good requirements are understood.",
+      range: "Call-outs, repairs and installation work are quoted against the actual site condition and material requirement.",
     },
   };
-  return (
-    map[serviceSlug] ?? {
-      lead: "We scope on site before locking numbers.",
-      range: "Budget tiers depend on risk, programme, and finishes.",
-    }
-  );
+
+  return map[serviceSlug] ?? {
+    lead: "We confirm scope before locking pricing.",
+    range: "The project-specific quote is issued after the relevant site and material assumptions are understood.",
+  };
+}
+
+function scopeExamples(service: ConstructionService): string[] {
+  const examples: Record<string, string[]> = {
+    construction: [
+      "Example scope: residential alterations or extensions",
+      "Example scope: masonry, concrete and structural coordination",
+      "Example scope: commercial fit-out building work",
+      "Example scope: making-good and finish coordination",
+    ],
+    tiling: [
+      "Example scope: bathroom wall and floor tiling",
+      "Example scope: kitchen and living-area tiling",
+      "Example scope: outdoor tiling and interfaces with paving",
+      "Example scope: large-format tile installation",
+    ],
+    painting: [
+      "Example scope: interior repaint with preparation",
+      "Example scope: exterior coating and crack preparation",
+      "Example scope: ceilings, bulkheads and trim",
+      "Example scope: phased commercial repainting",
+    ],
+    "decking-flooring": [
+      "Example scope: timber or composite decking",
+      "Example scope: interior flooring replacement",
+      "Example scope: pool-surround or outdoor deck details",
+      "Example scope: substrate and edge-detail upgrades",
+    ],
+    paving: [
+      "Example scope: driveway paving and base preparation",
+      "Example scope: courtyard or walkway paving",
+      "Example scope: drainage channels and edge restraints",
+      "Example scope: repair and reinstatement of existing paving",
+    ],
+    waterproofing: [
+      "Example scope: balcony waterproofing before retiling",
+      "Example scope: wet-area waterproofing",
+      "Example scope: roof or penetration leak investigation",
+      "Example scope: membrane repair and finish reinstatement",
+    ],
+    renovations: [
+      "Example scope: bathroom renovation",
+      "Example scope: kitchen renovation and service coordination",
+      "Example scope: apartment or whole-home refresh",
+      "Example scope: layout changes subject to structural review",
+    ],
+    plumbing: [
+      "Example scope: mixer, valve and sanitaryware replacement",
+      "Example scope: leak investigation and repair",
+      "Example scope: drainage repair with making-good",
+      "Example scope: plumbing changes coordinated with renovations",
+    ],
+  };
+
+  return examples[service.slug] ?? [
+    `Example scope: ${service.name.toLowerCase()} assessment and quotation`,
+    `Example scope: ${service.name.toLowerCase()} installation or repair`,
+  ];
 }
 
 function faqsFor(service: ConstructionService, city: string): { question: string; answer: string }[] {
-  const s = service.name.toLowerCase();
-  const common: { question: string; answer: string }[] = [
+  const common = [
     {
-      question: `Do you work across ${city} suburbs and estates?`,
-      answer: `Yes, we regularly mobilise across ${city} and neighbouring nodes. Access rules, HOA protocols, and parking vary by suburb; we bake that into programme and protection.`,
+      question: `Do you quote ${service.name.toLowerCase()} work in ${city}?`,
+      answer: `Yes. Share the site location, photos where available, and the required outcome. Access, existing condition and scope are confirmed before the quote is finalised.`,
     },
     {
-      question: "How soon can you start after approving a quote?",
-      answer:
-        "Lead times depend on crew availability and material releases. Small remedials can slot faster; phased renovations book against lockable milestones.",
+      question: "How soon can work start after a quote is approved?",
+      answer: "Start dates depend on crew availability, materials, access and the size of the scope. The proposed programme is confirmed with the quote or before mobilisation.",
     },
     {
       question: "Are quotes fixed or provisional?",
-      answer:
-        "Where scope, drawings, and finishes are locked, we quote fixed milestones. Open-ended strip-outs stay provisional until substrates are exposed.",
+      answer: "Where scope and selections are defined, pricing can be structured around agreed work and milestones. Unknown concealed conditions are identified as assumptions or provisional items rather than presented as fixed facts.",
     },
   ];
 
   const specific: Record<string, { question: string; answer: string }[]> = {
     tiling: [
-      {
-        question: "How long does residential tiling take?",
-        answer:
-          "Most bathrooms take roughly 3–7 elapsed days once waterproofing and curing windows are honoured, large-format tiles and stone slow the programme slightly.",
-      },
-      {
-        question: "Do you supply tiles or labour-only?",
-        answer:
-          "We can supply-and-fix or install client-supplied tiles. Labour-only quotes assume tiles are on site, checked for batch variance, and suitable for the substrate.",
-      },
+      { question: "Do you supply tiles or install client-supplied tiles?", answer: "Both options can be scoped. The quote should state who supplies tiles, trims, adhesive, grout and related materials." },
+      { question: "Do wet areas need waterproofing before tiling?", answer: "Where the area requires a waterproofing system, that preparation should be completed and checked before the finish is closed in." },
     ],
     renovations: [
-      {
-        question: "How long does a bathroom renovation take?",
-        answer:
-          "Allow roughly 2–5 weeks wall-clock for full wet-area refurbishments, longer if structural changes, custom joinery, or lead-time-bound imports feature.",
-      },
-      {
-        question: "Can we live in the house during renovation?",
-        answer:
-          "Often yes. We dust-seal corridors, sequence noisy work, and maintain safe segregations, especially important for homes with kids or tenants.",
-      },
+      { question: "Can renovation work be phased?", answer: "Yes. Phasing can reduce disruption when the sequence still allows safe access, inspections and proper curing or drying windows." },
+      { question: "Can we stay in the property during renovation?", answer: "That depends on the rooms affected, dust/noise, services isolation and safe separation between occupied and active work areas." },
     ],
     waterproofing: [
-      {
-        question: "Will you issue warranties on waterproofing?",
-        answer:
-          "Manufacturer warranties apply to correctly installed systems; we document preparation, primer coats, and flood tests where relevant.",
-      },
-      {
-        question: "My balcony leaks, do you repair without full retiling?",
-        answer:
-          "Sometimes, interfaces and outlets fail first. We investigate before recommending strip depth; partial reinstatement saves cost when details allow.",
-      },
+      { question: "Do you inspect before recommending a waterproofing repair?", answer: "Yes. The source of ingress and failed detail should be investigated before selecting a repair method." },
+      { question: "Can waterproofing be repaired without full retiling?", answer: "Sometimes. The correct strip-out depth depends on where the failure is and whether the existing interfaces can be retained reliably." },
     ],
     plumbing: [
-      {
-        question: "Do you handle leak detection?",
-        answer:
-          "We isolate circuits, pressure-test, and expose failures surgically before quoting reinstatement, especially important before tiling closes in.",
-      },
+      { question: "Do you handle leak investigation?", answer: "Leak and pressure issues can be scoped as part of the plumbing work, with access and making-good requirements confirmed before repair." },
     ],
     paving: [
-      {
-        question: "How long before we can drive on new paving?",
-        answer:
-          "Compaction and jointing need cure windows, often 48–72 hours for domestic traffic, longer for heavy vehicles depending on specification.",
-      },
+      { question: "What affects paving durability?", answer: "Base preparation, drainage, edge restraint, compaction, jointing and expected vehicle loading all affect performance." },
     ],
     painting: [
-      {
-        question: "Do you prime new plaster before colour coats?",
-        answer:
-          "Yes, our teams start with suction-balanced primers and only then lock topcoats; skips here cause holidays and callbacks.",
-      },
+      { question: "Is preparation included before painting?", answer: "Preparation should be stated in the quote because cracks, peeling coatings, damp or new plaster can materially change the required system." },
     ],
     construction: [
-      {
-        question: "Do you subcontract specialists?",
-        answer:
-          "Yes, structural steel, fire, lifts, and MEICA coordinate through our site managers with unified programmes and QA hold-points.",
-      },
+      { question: "Do structural changes need professional input?", answer: "Where work affects structure, the appropriate engineer or other competent professional should confirm the design requirements before construction proceeds." },
     ],
     "decking-flooring": [
-      {
-        question: "Composite or timber near the coast?",
-        answer:
-          "Composite often wins on maintenance; timber needs durable species and coatings rated for UV/moisture cycling, we specify per orientation and spray exposure.",
-      },
+      { question: "How do you choose between timber and composite decking?", answer: "Selection depends on appearance, maintenance expectations, exposure, structure, drainage and budget." },
     ],
   };
 
-  const extra = specific[service.slug] ?? [
-    {
-      question: `What changes pricing for ${s} in ${city}?`,
-      answer: `Access (high-rise vs freestanding), existing substrate quality, after-hours restrictions, and regional climate cycles all move ${s} pricing, we confirm on walkthrough.`,
-    },
-  ];
-
-  return [...extra.slice(0, 2), ...common].slice(0, 6);
+  return [...(specific[service.slug] ?? []), ...common].slice(0, 6);
 }
 
 export function getMoneyPageContent(service: ConstructionService, loc: LocationPage): MoneyPageContent {
   const { lead, range } = pricingFor(service.slug);
-  const mats: Record<string, string> = {
-    construction: "We coordinate structural concrete, masonry, lightweight partitioning, and architectural finishes per engineer and architect sign-off.",
-    tiling: "Ceramic and porcelain formats dominate wet areas; stone and large panels need substrate flatness (SR classification) verified early.",
-    painting: "Acrylic systems suit most interiors; resilient or specialised membranes apply to wet zones and high-traffic commercial shells.",
-    "decking-flooring": "Structural pine, hardwoods, or composites pair with galvanised or stainless fixings depending on exposure class.",
-    paving: "Clay pavers, cement pavers, and exposed aggregate each demand different bedding and edge restraint strategies.",
-    waterproofing: "Liquid PU, torch-on bitumen, and sheet PVC each suit different crack tolerance and detailing complexity.",
-    renovations: "We sequence strip-out, CI fixes, MEP rough-ins, waterproofing, tiling, and joinery so inspections aren’t skipped.",
-    plumbing: "Copper, PEX, and PVC-u lines are matched to municipal bylaws and insurer preferences on domestic work.",
+
+  const materials: Record<string, string> = {
+    construction: "Materials and systems are selected against the approved scope, drawings and site conditions.",
+    tiling: "Tile format, adhesive, grout, trims, substrate preparation and waterproofing requirements should be confirmed together.",
+    painting: "Primer, preparation and topcoat systems depend on the substrate, exposure and existing coating condition.",
+    "decking-flooring": "Product choice, structure, fixings, moisture exposure and edge details should be resolved before installation.",
+    paving: "Pavers, bedding, base layers, drainage and edge restraint should be specified for the intended use.",
+    waterproofing: "The membrane or repair system should match the failed detail, movement risk, exposure and finish build-up.",
+    renovations: "Renovation work is coordinated across demolition, building, services, waterproofing, finishes and handover requirements.",
+    plumbing: "Pipework and fittings should suit the application, access requirements and applicable local standards.",
   };
-
-  const proofMap: Record<string, string[]> = {
-    construction: [
-      "Structural shell and facade closes on a gated estate near {suburb}",
-      "Townhouse extension programme in {suburb}",
-      "Commercial tenant installation coordination in {city}",
-      "Steel-and-masonry interface QA walkthrough before plaster trade in {suburb}",
-    ],
-    tiling: [
-      "Full bathroom retiling with waterproofing uplift near {suburb}",
-      "Kitchen splashbacks and floor tiling in {suburb}",
-      "Outdoor entertainment cladding interfacing with paving in {suburb}",
-      "Large-format porcelain lay with laser datum control in {suburb}",
-    ],
-    painting: [
-      "Interior repaint with plaster remediation in {suburb}",
-      "Facade repaint including crack chasing in {suburb}",
-      "Commercial phased repaint after hours in {city}",
-      "Ceiling and bulkhead repaint package in {suburb}",
-    ],
-    "decking-flooring": [
-      "Composite deck replacement with improved drainage in {suburb}",
-      "Interior engineered flooring over slab in {suburb}",
-      "Pool surround decking detail near {suburb}",
-      "Balustrade corrosion-class upgrade tied to deck structure in {suburb}",
-    ],
-    paving: [
-      "Driveway rebuild with edge restraint and soakaway in {suburb}",
-      "Courtyard pavers and channels in {suburb}",
-      "Commercial forecourt paving maintenance in {city}",
-      "Pedestrian circulation reset with tactile warning zones in {suburb}",
-    ],
-    waterproofing: [
-      "Balcony membrane reinstatement before retiling in {suburb}",
-      "Planter waterproofing detail near {suburb}",
-      "Roof penetration reflash after storm damage in {suburb}",
-      "Slab-on-grade cold-joint reinstatement in {suburb}",
-    ],
-    renovations: [
-      "Bathroom gut-to-shell refurbishment in {suburb}",
-      "Kitchen remodel with services reroute in {suburb}",
-      "Whole-floor apartment refresh in {city}",
-      "Load-bearing wall investigation ahead of layout change in {suburb}",
-    ],
-    plumbing: [
-      "Mixer and shut-off replacement ahead of tiling in {suburb}",
-      "Drainage investigation with paving reinstatement in {suburb}",
-      "Geyser circuit isolation and safety audit in {suburb}",
-      "Hidden leak chase with minimal chase footprint in {suburb}",
-    ],
-  };
-
-  const templates = proofMap[service.slug] ?? proofMap.construction;
-  const proofProjects = proofLine(loc, templates, service.slug).slice(0, 4);
-
-  const pricingHooks: Record<string, string> = {
-    construction: "Structured milestones, we won’t guess structural scope without drawings and engineer input.",
-    tiling: "Projects often start from modest bathroom phases through full wet-room rebuilds, we bracket m² rates after laser levels and waterproofing scope.",
-    painting: "Repaints scale with prep, expect clearer numbers once cracks, peeling, and suction are assessed.",
-    "decking-flooring": "Deck quotes move with height off ground, corrosion class, and drainage, coastal specs cost more than sheltered courts.",
-    paving: "Driveway classes jump when bases deepen or edges need kerb upgrades.",
-    waterproofing: "Stopping ingress beats repeating cosmetics, we price trays and interfaces separately from finishes.",
-    renovations: "Kitchens and bathrooms bundle trades, one programme reduces downtime versus sequential quotes.",
-    plumbing: "Isolated fixes stay lean; concealed leaks needing chase-and-repair attract making-good lines.",
-  };
-
-  const localSignalsParagraph = `We regularly complete ${service.name.toLowerCase()} work around ${suburbsSnippet(loc)}, not as an exhaustive service map, but as real mobilisation patterns our crews know. ${loc.regionalBuildNote}`;
-
-  const materialsNote = mats[service.slug] ?? mats.construction;
-
-  const processSteps = [
-    `Site inspection & photos (${loc.name})`,
-    "Written quote with assumptions, exclusions, and programme",
-    "Mobilisation, protection of finishes, and daily housekeeping",
-    `${service.name} execution with hold-points for QA`,
-    "Snag, manufacturer/system checks where applicable, and handover pack",
-  ];
 
   return {
-    localSignalsParagraph,
-    materialsNote,
-    pricingHook: pricingHooks[service.slug] ?? pricingHooks.construction,
-    proofProjects,
+    localSignalsParagraph: `Team Edlick quotes ${service.name.toLowerCase()} work across ${loc.name} and surrounding areas subject to site access and scope. Local climate and building conditions are considered during specification. ${loc.regionalBuildNote}`,
+    materialsNote: materials[service.slug] ?? materials.construction,
+    pricingHook: "Request a site-specific quote rather than relying on an unverified generic project or price claim.",
+    proofProjects: scopeExamples(service),
     pricingHeading: `Cost of ${service.name.toLowerCase()} in ${loc.name}`,
     pricingLead: lead,
     pricingRange: range,
-    pricingDisclaimer:
-      "Published ranges are marketing guides only, not quotations. We confirm pricing after substrate inspection and scope lock.",
+    pricingDisclaimer: "Website guidance is not a quotation. Team Edlick confirms pricing after the relevant scope, access and site-condition assumptions are understood.",
     processHeading: `Our ${service.name.toLowerCase()} process`,
-    processSteps,
+    processSteps: [
+      `Scope review and site information (${loc.name})`,
+      "Written quote with assumptions, exclusions and proposed programme",
+      "Mobilisation and protection of adjacent finishes",
+      `${service.name} execution with appropriate checks before work is closed in`,
+      "Snag review and handover",
+    ],
     faqs: faqsFor(service, loc.name),
     trustBullets: [
-      "Cape Town and surrounding-area project focus",
-      "Programme-led site coordination across residential and commercial scopes",
-      "Transparent quoting with staged milestones on larger scopes",
-      "Waterfront-based operations desk, responsive scheduling",
+      "Cape Town and surrounding-area quoting focus",
+      "Written scope, assumptions and exclusions",
+      "Coordinated sequencing across related trades",
+      "Verified project evidence published separately from generic service guidance",
     ],
   };
 }
