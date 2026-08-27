@@ -15,7 +15,6 @@ import {
   getHubExpanded,
   getHubProcessSteps,
   getHubProof,
-  getHubTestimonials,
 } from "@/lib/service-hub";
 import { getMoneyPageContent } from "@/lib/service-location-content";
 import { buildPageMetadata } from "@/lib/seo";
@@ -42,7 +41,7 @@ export async function generateMetadata({
   const description =
     service.slug === "tiling"
       ? "Professional tiling services in Cape Town. Bathroom, kitchen, and floor tiling with waterproofing and precision finishes."
-      : `${service.summary} Request a quote for ${service.name.toLowerCase()} across Cape Town suburbs: pricing guides, process, on-site proof, and your ${service.name.toLowerCase()} in Cape Town hub.`;
+      : `${service.summary} Request a quote for ${service.name.toLowerCase()} across Cape Town suburbs: pricing guides, process, and your ${service.name.toLowerCase()} in Cape Town hub.`;
 
   return buildPageMetadata(path, title, description, {
     keywords: [
@@ -63,7 +62,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const money = getMoneyPageContent(service, capeTown);
   const hub = getHubExpanded(service);
   const proof = getHubProof(service.slug);
-  const testimonials = getHubTestimonials(service.slug);
   const relatedSlugs = getRelatedServiceSlugs(service.slug);
   const related: ConstructionService[] = relatedSlugs
     .map((slug) => resolveService(slug))
@@ -85,7 +83,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         hub={hub}
         proof={proof}
         processSteps={getHubProcessSteps(service.slug)}
-        testimonials={testimonials}
+        testimonials={[]}
         related={related}
         capeTownSlug={capeTown.city}
         suburbs={capeTown.focusSuburbs}
