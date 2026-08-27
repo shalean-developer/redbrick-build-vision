@@ -4,31 +4,29 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { BeforeAfter } from "@/components/authority/BeforeAfter";
-import { ProjectShowcaseSection } from "@/components/authority/ProjectShowcaseSection";
-import { TestimonialStrip } from "@/components/authority/TestimonialStrip";
 import { TopicAuthorityLinks } from "@/components/authority/TopicAuthorityLinks";
 import { MoneyPageFaqs } from "@/components/marketing/MoneyPageFaqs";
 import { ServiceLocationJsonLd } from "@/components/seo/ServiceLocationJsonLd";
-import { getAuthorityShowcase } from "@/lib/authority-showcase";
 import {
   comboIntroParagraphs,
   constructionServices,
   getConstructionService,
 } from "@/lib/construction-services";
+import { canPublishServiceLocation } from "@/lib/location-seo";
 import { locationPages } from "@/lib/locations";
 import { getMoneyPageContent } from "@/lib/service-location-content";
 import { buildPageMetadata } from "@/lib/seo";
-import { authorityTestimonials } from "@/lib/testimonials";
 import { ShaleanCleaningReferral } from "@/components/partners/ShaleanCleaningReferral";
 import { showShaleanReferralOnMoneyPage } from "@/lib/partners";
 
 export function generateStaticParams() {
   return constructionServices.flatMap((service) =>
-    locationPages.map((loc) => ({
-      serviceSlug: service.slug,
-      city: loc.city,
-    })),
+    locationPages
+      .filter((loc) => canPublishServiceLocation(loc.city))
+      .map((loc) => ({
+        serviceSlug: service.slug,
+        city: loc.city,
+      })),
   );
 }
 
@@ -40,11 +38,11 @@ export async function generateMetadata({
   const { serviceSlug, city } = await params;
   const service = getConstructionService(serviceSlug);
   const loc = locationPages.find((l) => l.city === city);
-  if (!service || !loc) return {};
+  if (!service || !loc || !canPublishServiceLocation(city)) return {};
 
   const path = `/services/${service.slug}/${loc.city}`;
   const title = `${service.name} in ${loc.name} | Team Edlick Construction`;
-  const description = `${service.summary} See pricing guides, local suburbs we mobilise to, process, and FAQs, request a ${service.name.toLowerCase()} quote in ${loc.name}.`;
+  const description = `${service.summary} See pricing guides, local service context, process and FAQs, and request a ${service.name.toLowerCase()} quote in ${loc.name}.`;
 
   const kw = [
     ...service.keywords,
@@ -66,12 +64,11 @@ export default async function ServiceCityPage({
   const { serviceSlug, city } = await params;
   const service = getConstructionService(serviceSlug);
   const loc = locationPages.find((l) => l.city === city);
-  if (!service || !loc) notFound();
+  if (!service || !loc || !canPublishServiceLocation(city)) notFound();
 
   const path = `/services/${service.slug}/${loc.city}`;
   const intros = comboIntroParagraphs(service, loc.name);
   const money = getMoneyPageContent(service, loc);
-  const authority = getAuthorityShowcase(service.slug, loc.city, loc.name);
   const otherServices = constructionServices.filter((s) => s.slug !== service.slug);
 
   return (
@@ -107,7 +104,7 @@ export default async function ServiceCityPage({
                 <Link href="/contact">Request a quote</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/projects">See projects</Link>
+                <Link href="/projects">See verified projects</Link>
               </Button>
             </div>
           </div>
@@ -130,12 +127,12 @@ export default async function ServiceCityPage({
             </p>
           </section>
 
-          <section className="mt-14" aria-labelledby="proof-heading">
-            <h2 id="proof-heading" className="text-2xl font-bold mb-4">
+          <section className="mt-14" aria-labelledby="scope-heading">
+            <h2 id="scope-heading" className="text-2xl font-bold mb-4">
               Typical {service.name.toLowerCase()} scopes around {loc.name}
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
-              Illustrative project types we commonly quote and plan for in the area. These examples are not presented as a log of completed projects.
+              Illustrative scope types we quote and plan for in the region. These are not presented as completed local projects.
             </p>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
               {money.proofProjects.map((line) => (
@@ -143,23 +140,6 @@ export default async function ServiceCityPage({
               ))}
             </ul>
           </section>
-
-          <ProjectShowcaseSection
-            serviceSlug={service.slug}
-            citySlug={loc.city}
-            serviceLabel={service.name}
-            cityLabel={loc.name}
-            projects={authority.projects}
-          />
-
-          <BeforeAfter
-            beforeSrc={authority.beforeAfter.beforeSrc}
-            afterSrc={authority.beforeAfter.afterSrc}
-            expectedBeforePath={authority.beforeAfter.expectedBeforePath}
-            expectedAfterPath={authority.beforeAfter.expectedAfterPath}
-            caption={authority.beforeAfter.caption}
-            cityLabel={loc.name}
-          />
 
           <section className="mt-14 rounded-xl border bg-card p-6 shadow-card" aria-labelledby="pricing-heading">
             <h2 id="pricing-heading" className="text-2xl font-bold mb-3">
@@ -196,8 +176,6 @@ export default async function ServiceCityPage({
             </ul>
           </section>
 
-          <TestimonialStrip items={authorityTestimonials} />
-
           <MoneyPageFaqs heading={`${service.name} FAQs, ${loc.name}`} items={money.faqs} />
 
           <div className="mt-14">
@@ -225,7 +203,7 @@ export default async function ServiceCityPage({
               <Link href="/contact" className="text-primary hover:underline">
                 Tell us the full scope on one brief
               </Link>{" "}
-             , we sequence waterproofing, tiling, and finishing in the right order.
+              — we sequence waterproofing, tiling, and finishing in the right order.
             </p>
           </div>
 
