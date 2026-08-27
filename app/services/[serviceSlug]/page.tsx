@@ -14,9 +14,8 @@ import {
   getHubCapeTown,
   getHubExpanded,
   getHubProcessSteps,
-  getHubProof,
 } from "@/lib/service-hub";
-import { isVerifiedProjectImage } from "@/lib/project-evidence";
+import { getVerifiedProjectEvidence } from "@/lib/project-evidence";
 import { getMoneyPageContent } from "@/lib/service-location-content";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -62,7 +61,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const capeTown = getHubCapeTown();
   const money = getMoneyPageContent(service, capeTown);
   const hub = getHubExpanded(service);
-  const proof = getHubProof(service.slug).filter((item) => isVerifiedProjectImage(item.src));
+  const proof = getVerifiedProjectEvidence(service.slug).map((item) => ({
+    src: item.imageSrc,
+    alt: item.imageAlt,
+    caption: `${item.scopeSummary} — ${item.locationLabel}`,
+  }));
   const relatedSlugs = getRelatedServiceSlugs(service.slug);
   const related: ConstructionService[] = relatedSlugs
     .map((slug) => resolveService(slug))
