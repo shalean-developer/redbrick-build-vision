@@ -1,14 +1,15 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog";
 import { constructionServices } from "@/lib/construction-services";
+import { canIndexLocation, canPublishServiceLocation } from "@/lib/location-seo";
 import { locationPages } from "@/lib/locations";
 import { siteOrigin } from "@/lib/site";
 
-const staticPaths: { path: string; priority: number }[] = [
+const staticPaths: { path: string; priority: number; locationSlug?: string }[] = [
   { path: "/", priority: 1 },
   { path: "/services", priority: 0.88 },
   { path: "/locations", priority: 0.86 },
-  { path: "/locations/bellville", priority: 0.78 },
+  { path: "/locations/bellville", priority: 0.78, locationSlug: "bellville" },
   { path: "/projects", priority: 0.82 },
   { path: "/contact", priority: 0.84 },
   { path: "/about", priority: 0.78 },
@@ -20,11 +21,13 @@ const staticPaths: { path: string; priority: number }[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const main = staticPaths.map(({ path, priority }) => ({
-    url: path === "/" ? siteOrigin : `${siteOrigin}${path}`,
-    changeFrequency: "monthly" as const,
-    priority,
-  }));
+  const main = staticPaths
+    .filter(({ locationSlug }) => !locationSlug || canIndexLocation(locationSlug))
+    .map(({ path, priority }) => ({
+      url: path === "/" ? siteOrigin : `${siteOrigin}${path}`,
+      changeFrequency: "monthly" as const,
+      priority,
+    }));
 
   const blog = blogPosts.map((post) => ({
     url: `${siteOrigin}/blog/${post.slug}`,
@@ -32,11 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
-  const locations = locationPages.map((loc) => ({
-    url: `${siteOrigin}/locations/${loc.city}`,
-    changeFrequency: "monthly" as const,
-    priority: loc.city === "cape-town" ? 0.9 : 0.75,
-  }));
+  const locations = locationPages
+    .filter((loc) => canIndexLocation(loc.city))
+    .map((loc) => ({
+      url: `${siteOrigin}/locations/${loc.city}`,
+      changeFrequency: "monthly" as const,
+      priority: loc.city === "cape-town" ? 0.9 : 0.75,
+    }));
 
   const serviceHubs = constructionServices.map((s) => ({
     url: `${siteOrigin}/services/${s.slug}`,
@@ -45,11 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const serviceLocations = constructionServices.flatMap((s) =>
-    locationPages.map((loc) => ({
-      url: `${siteOrigin}/services/${s.slug}/${loc.city}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.92,
-    })),
+    locationPages
+      .filter((loc) => canPublishServiceLocation(loc.city))
+      .map((loc) => ({
+        url: `${siteOrigin}/services/${s.slug}/${loc.city}`,
+        changeFrequency: "monthly" as const,
+        priority: 0.92,
+      })),
   );
 
   return [...main, ...blog, ...locations, ...serviceHubs, ...serviceLocations];
