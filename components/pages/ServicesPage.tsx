@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import { constructionServices } from "@/lib/construction-services";
+import { getServiceHubHref } from "@/lib/service-routes";
 import {
   Construction,
   Grid3x3,
@@ -102,7 +103,7 @@ export default function ServicesPage() {
             </p>
             <nav className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2" aria-label="Service hubs">
               {constructionServices.map((s) => (
-                <Link key={s.slug} href={`/services/${s.slug}`} className="text-sm font-medium text-primary hover:underline">
+                <Link key={s.slug} href={getServiceHubHref(s.slug)} className="text-sm font-medium text-primary hover:underline">
                   {s.name}
                 </Link>
               ))}

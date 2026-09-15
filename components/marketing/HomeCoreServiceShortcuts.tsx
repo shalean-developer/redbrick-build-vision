@@ -22,7 +22,7 @@ const SHORTCUTS: { href: string; title: string; blurb: string }[] = [
     blurb: "New builds, shells, and commercial or residential delivery to handover standards.",
   },
   {
-    href: "/services/paving",
+    href: "/services/paving/cape-town",
     title: "Paving",
     blurb: "Driveways, forecourts, and outdoor circulation with correct falls and restraints.",
   },

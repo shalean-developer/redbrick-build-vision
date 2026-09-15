@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: loc.city === "cape-town" ? 0.9 : 0.75,
     }));
 
-  const serviceHubs = constructionServices.map((s) => ({
+  const serviceHubs = constructionServices.filter((s) => s.slug !== "paving").map((s) => ({
     url: `${siteOrigin}/services/${s.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.87,

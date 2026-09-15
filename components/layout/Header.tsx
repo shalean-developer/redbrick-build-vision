@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 const SERVICE_SHORTCUTS = [
   { href: "/services/tiling", label: "Tiling services" },
   { href: "/services/renovations", label: "Renovations" },
-  { href: "/services/paving", label: "Paving services" },
+  { href: "/services/paving/cape-town", label: "Paving services" },
 ] as const;
 
 /** Exact paths where the first viewport uses the full-width photo Hero + red gradient (transparent bar + light links). */

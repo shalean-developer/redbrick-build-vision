@@ -6,6 +6,7 @@ import type { ConstructionService } from "@/lib/construction-services";
 import type { LocationPage } from "@/lib/locations";
 import { canPublishServiceLocation } from "@/lib/location-seo";
 import { whatsappQuoteUrl } from "@/lib/contact";
+import { getServiceHubHref } from "@/lib/service-routes";
 
 /** Short lines for service × city cards (local SEO intent). */
 const teaserBySlug: Partial<Record<string, string>> = {
@@ -123,7 +124,7 @@ export function LocationCityHub({ loc, services }: Props) {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((s) => {
-              const href = serviceLocationEligible ? `/services/${s.slug}/${loc.city}` : `/services/${s.slug}`;
+              const href = serviceLocationEligible ? `/services/${s.slug}/${loc.city}` : getServiceHubHref(s.slug);
               return (
                 <Link
                   key={s.slug}

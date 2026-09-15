@@ -16,6 +16,7 @@ import { canPublishServiceLocation } from "@/lib/location-seo";
 import { locationPages } from "@/lib/locations";
 import { getMoneyPageContent } from "@/lib/service-location-content";
 import { buildPageMetadata } from "@/lib/seo";
+import { getServiceHubHref } from "@/lib/service-routes";
 import { ShaleanCleaningReferral } from "@/components/partners/ShaleanCleaningReferral";
 import { showShaleanReferralOnMoneyPage } from "@/lib/partners";
 
@@ -79,7 +80,7 @@ export default async function ServiceCityPage({
         <div className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
           <div className="container mx-auto px-4 max-w-3xl">
             <p className="text-sm font-medium text-primary mb-2">
-              <Link href={`/services/${service.slug}`} className="hover:underline">{service.name} services</Link>
+              <Link href={getServiceHubHref(service.slug)} className="hover:underline">{service.name} services</Link>
               <span className="text-muted-foreground"> · </span>
               <Link href={`/locations/${loc.city}`} className="hover:underline">{loc.name}</Link>
             </p>

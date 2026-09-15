@@ -12,6 +12,7 @@ import {
   type HubProcessStep,
 } from "@/lib/service-hub";
 import type { Testimonial } from "@/lib/testimonials";
+import { getServiceHubHref } from "@/lib/service-routes";
 
 /** Same URLs as homepage cards (see lib/assets); avoids extra literals per gallery slot budget */
 const hubHeroSrc: Record<string, string> = {
@@ -220,7 +221,7 @@ export function ServiceHubView({
           <ul className="grid gap-3 sm:grid-cols-2 list-none m-0 p-0">
             {related.map((s) => (
               <li key={s.slug}>
-                <Link href={`/services/${s.slug}`} className="flex items-center justify-between rounded-lg border bg-background px-4 py-3 font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
+                <Link href={getServiceHubHref(s.slug)} className="flex items-center justify-between rounded-lg border bg-background px-4 py-3 font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
                   {s.name}<span aria-hidden className="text-muted-foreground">→</span>
                 </Link>
               </li>
