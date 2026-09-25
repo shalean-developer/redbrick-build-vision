@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  /** Legacy URLs preserved as permanent redirects to their canonical replacements. */
+  /** Legacy and competing URLs permanently consolidate into their canonical replacements. */
   async redirects() {
     return [
       {
@@ -18,7 +18,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/services/:serviceSlug/johannesburg",
-        destination: "/services/:serviceSlug/cape-town",
+        destination: "/services/:serviceSlug",
+        permanent: true,
+      },
+      {
+        source: "/services/:serviceSlug/cape-town",
+        destination: "/services/:serviceSlug",
         permanent: true,
       },
     ];
