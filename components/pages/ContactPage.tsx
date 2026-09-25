@@ -123,7 +123,7 @@ export default function ContactPage() {
 
               <div className="mt-8 rounded-lg overflow-hidden shadow-card h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.5897488894873!2d18.41932!3d-33.905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU0JzE4LjAiUyAxOMKwMjUnMDkuNiJF!5e0!3m2!1sen!2sza!4v1234567890"
+                  src="https://www.google.com/maps?q=The%20Watershed%2C%20D03%20Dock%20Road%2C%20Waterfront%2C%20Cape%20Town%2C%20Western%20Cape&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
