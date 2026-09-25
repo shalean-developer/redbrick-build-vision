@@ -1,3 +1,36 @@
+export type ProjectRegisterStatus = "pending-upload" | "verified" | "rejected";
+
+export type ProjectRegisterEntry = {
+  id: string;
+  serviceSlug: string;
+  locationLabel: string;
+  scopeSummary: string;
+  completedAt?: string;
+  status: ProjectRegisterStatus;
+  /** Add one or more /projects/evidence/... paths when project photos are uploaded. */
+  photoPaths: string[];
+  /** Internal references only; do not expose invoice/customer data in public pages. */
+  supportingReferences: string[];
+  evidenceNote?: string;
+};
+
+/**
+ * Source of truth for count-based claims such as "100+ completed projects".
+ *
+ * Add one entry per completed customer project. Multiple trades completed under one
+ * job should normally remain one project entry. Keep entries as pending-upload until
+ * the supporting photos/records have been attached and checked.
+ */
+export const projectRegister: ProjectRegisterEntry[] = [];
+
+export function getVerifiedCompletedProjectCount() {
+  return projectRegister.filter((item) => item.status === "verified").length;
+}
+
+export function canClaimCompletedProjects(minimum: number) {
+  return getVerifiedCompletedProjectCount() >= minimum;
+}
+
 export type ProjectEvidenceStatus = "candidate" | "verified" | "rejected";
 
 export type VerifiedProjectEvidence = {
