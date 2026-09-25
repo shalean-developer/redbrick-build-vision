@@ -4,15 +4,15 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata(
   "/projects",
-  "Our Projects | Team Edlick Construction Portfolio - South Africa",
-  "View Team Edlick's completed construction projects across South Africa including housing, infrastructure, commercial, and renovation projects. 100+ projects delivered with excellence.",
+  "Construction Projects Cape Town | Team Edlick",
+  "Explore verified Team Edlick construction, tiling, renovation, paving, waterproofing and finishing work from the Cape Town portfolio.",
   {
     keywords: [
-      "construction projects South Africa",
-      "housing projects",
-      "infrastructure development",
-      "commercial construction",
-      "renovation portfolio",
+      "construction projects Cape Town",
+      "building contractor portfolio Cape Town",
+      "renovation projects Cape Town",
+      "tiling projects Cape Town",
+      "waterproofing projects Cape Town",
     ],
   },
 );
