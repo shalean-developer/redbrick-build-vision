@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata(
   "/contact",
   "Contact Team Edlick Construction | Cape Town",
-  "Contact Team Edlick Construction for a quote. Call +27 68 594 3091 or +27 82 758 7466. Office: 17 Postma St, Bellville, Cape Town, 7530, Western Cape.",
+  "Contact Team Edlick Construction for a quote. Call +27 68 594 3091. Office: 17 Postma St, Bellville, Cape Town, 7530, Western Cape.",
   {
     keywords: [
       "contact Team Edlick",
