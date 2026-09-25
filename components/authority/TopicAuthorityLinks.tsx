@@ -44,7 +44,10 @@ export function TopicAuthorityLinks({ serviceSlug, serviceName, citySlug, cityNa
               if (!svc) return null;
               return (
                 <li key={slug}>
-                  <Link href={`/services/${slug}/${citySlug}`} className="text-primary font-medium hover:underline">
+                  <Link
+                    href={citySlug === "cape-town" ? `/services/${slug}` : `/services/${slug}/${citySlug}`}
+                    className="text-primary font-medium hover:underline"
+                  >
                     {svc.name} in {cityName}
                   </Link>
                 </li>
