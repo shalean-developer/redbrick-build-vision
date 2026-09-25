@@ -1,6 +1,6 @@
 import {
   businessAddress,
-  businessPhones,
+  primaryBusinessPhone,
   defaultDescription,
   siteName,
   siteOrigin,
@@ -15,7 +15,7 @@ const organizationJsonLd = {
   url: siteOrigin,
   description: defaultDescription,
   logo: `${siteOrigin}/brand/teamedlick-logo.png`,
-  telephone: businessPhones,
+  telephone: primaryBusinessPhone,
   address: {
     "@type": "PostalAddress",
     streetAddress: businessAddress.streetAddress,
@@ -38,14 +38,6 @@ const organizationJsonLd = {
       "@type": "ContactPoint",
       name: "Sam",
       telephone: "+27-68-594-3091",
-      contactType: "customer service",
-      areaServed: "Cape Town, Western Cape, ZA",
-      availableLanguage: ["English"],
-    },
-    {
-      "@type": "ContactPoint",
-      name: "Bishop",
-      telephone: "+27-82-758-7466",
       contactType: "customer service",
       areaServed: "Cape Town, Western Cape, ZA",
       availableLanguage: ["English"],
