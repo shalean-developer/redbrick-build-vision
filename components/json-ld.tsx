@@ -21,6 +21,7 @@ const organizationJsonLd = {
     streetAddress: businessAddress.streetAddress,
     addressLocality: businessAddress.addressLocality,
     addressRegion: businessAddress.addressRegion,
+    postalCode: businessAddress.postalCode,
     addressCountry: businessAddress.addressCountry,
   },
   areaServed: {
