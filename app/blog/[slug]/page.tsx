@@ -51,31 +51,46 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
   const organizationId = `${siteOrigin}/#organization`;
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    url: articleUrl,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": articleUrl,
-    },
-    image: articleImage,
-    author: {
-      "@type": "Organization",
-      "@id": organizationId,
-      name: siteName,
-      url: siteOrigin,
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": organizationId,
-      name: siteName,
-      url: siteOrigin,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteOrigin}/brand/teamedlick-logo.png`,
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${articleUrl}#article`,
+        headline: post.title,
+        description: post.description,
+        url: articleUrl,
+        inLanguage: "en-ZA",
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": articleUrl,
+        },
+        image: articleImage,
+        author: {
+          "@type": "Organization",
+          "@id": organizationId,
+          name: siteName,
+          url: siteOrigin,
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": organizationId,
+          name: siteName,
+          url: siteOrigin,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteOrigin}/brand/teamedlick-logo.png`,
+          },
+        },
       },
-    },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteOrigin },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${siteOrigin}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: articleUrl },
+        ],
+      },
+    ],
   };
 
   const body =
