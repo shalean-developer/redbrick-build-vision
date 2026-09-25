@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-/** Official raster logo — replace `public/brand/teamedlick-logo.png` only; do not redraw in code. */
-export const TEAM_EDLICK_LOGO_SRC = "/brand/teamedlick-logo.png";
+/** Official Team Edlick brand mark used in compact header/logo placements. */
+export const TEAM_EDLICK_LOGO_SRC = "/brand/teamedlick-mark.svg";
 
 type Props = {
   className?: string;
-  /** Diameter of the circular logo (equal width & height) */
+  /** Diameter of the compact logo mark (equal width & height). */
   sizeClass?: string;
   priority?: boolean;
 };
@@ -26,10 +26,10 @@ export function TeamEdlickLogo({
     >
       <Image
         src={TEAM_EDLICK_LOGO_SRC}
-        alt="Team Edlick PVT Ltd — waterproofing, painting, renovating, plumbing, paving"
+        alt="Team Edlick PVT Ltd"
         fill
         priority={priority}
-        className="object-cover"
+        className="object-contain"
         sizes="64px"
       />
     </span>
