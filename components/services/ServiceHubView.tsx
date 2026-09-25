@@ -163,7 +163,7 @@ export function ServiceHubView({
           </p>
           <p className="mb-6">
             <Link href={cityLandingHref} className="inline-flex font-semibold text-primary hover:underline">
-              {hub.locationCtaLabel ?? "Explore the Cape Town service area →"}
+              Explore the Cape Town service area →
             </Link>
           </p>
           <p className="text-sm text-muted-foreground">
