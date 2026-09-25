@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, MapPin } from "lucide-react";
+import { businessAddress } from "@/lib/site";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -112,9 +113,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-2">Office Location</h3>
                     <p className="text-muted-foreground">
-                      The Watershed, D03 Dock Road
-                      <br />
-                      Waterfront, South Africa
+                      {businessAddress.displayLines.map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
                     </p>
                   </div>
                 </div>
