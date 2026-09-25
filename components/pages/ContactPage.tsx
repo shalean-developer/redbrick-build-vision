@@ -123,7 +123,7 @@ export default function ContactPage() {
 
               <div className="mt-8 rounded-lg overflow-hidden shadow-card h-64">
                 <iframe
-                  src="https://www.google.com/maps?q=The%20Watershed%2C%20D03%20Dock%20Road%2C%20Waterfront%2C%20Cape%20Town%2C%20Western%20Cape&output=embed"
+                  src="https://www.google.com/maps?q=17%20Postma%20St%2C%20Bellville%2C%20Cape%20Town%2C%207530&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
