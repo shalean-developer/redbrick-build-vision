@@ -1,13 +1,5 @@
 import { siteName, siteOrigin } from "@/lib/site";
 
-const postalAddress = {
-  "@type": "PostalAddress" as const,
-  streetAddress: "The Watershed, D03 Dock Road",
-  addressLocality: "Cape Town",
-  addressRegion: "Western Cape",
-  addressCountry: "ZA",
-};
-
 type FaqItem = { question: string; answer: string };
 
 type Props = {
@@ -20,6 +12,7 @@ type Props = {
 export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }: Props) {
   const pageUrl = `${siteOrigin}${path}`;
   const organizationId = `${siteOrigin}/#organization`;
+  const serviceId = `${pageUrl}#service`;
 
   const areaServed =
     cityName === "Cape Town"
@@ -37,46 +30,27 @@ export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }
           },
         }
       : {
-          "@type": "City" as const,
-          name: cityName,
-          containedInPlace: {
-            "@type": "Country" as const,
-            name: "South Africa",
-          },
+          "@type": "Place" as const,
+          name: `${cityName}, Cape Town, Western Cape, South Africa`,
         };
 
   const graph: Record<string, unknown>[] = [
     {
-      "@type": "GeneralContractor",
-      "@id": organizationId,
-      name: siteName,
-      url: siteOrigin,
-      description: `${siteName} provides ${serviceName} in ${cityName} and surrounding areas, South Africa.`,
-      telephone: ["+27685943091", "+27827587466"],
-      address: postalAddress,
+      "@type": "Service",
+      "@id": serviceId,
+      name: `${serviceName} in ${cityName}`,
+      serviceType: serviceName,
+      provider: { "@id": organizationId },
       areaServed,
-      knowsAbout: [serviceName, "Construction", "Renovations", cityName],
-      makesOffer: {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: `${serviceName} in ${cityName}`,
-          serviceType: serviceName,
-          areaServed,
-        },
-      },
+      url: pageUrl,
     },
     {
       "@type": "WebPage",
-      "@id": pageUrl,
+      "@id": `${pageUrl}#webpage`,
       url: pageUrl,
       name: `${serviceName} in ${cityName} | ${siteName}`,
       isPartOf: { "@type": "WebSite", name: siteName, url: siteOrigin },
-      about: {
-        "@type": "Service",
-        name: `${serviceName} in ${cityName}`,
-        provider: { "@id": organizationId },
-      },
+      about: { "@id": serviceId },
     },
   ];
 
@@ -95,12 +69,10 @@ export function ServiceLocationJsonLd({ path, serviceName, cityName, faqs = [] }
     });
   }
 
-  const payload = {
-    "@context": "https://schema.org",
-    "@graph": graph,
-  };
-
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }) }}
+    />
   );
 }
