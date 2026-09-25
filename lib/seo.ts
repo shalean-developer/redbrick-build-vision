@@ -7,6 +7,10 @@ function pageUrl(path: string) {
   return `${siteOrigin}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+function normaliseTitle(title: string) {
+  return /team edlick/i.test(title) ? title : `${title} | Team Edlick`;
+}
+
 const serviceSocialImages: Record<string, string> = {
   construction: gallery.e01,
   tiling: gallery.e02,
@@ -55,16 +59,17 @@ export function buildPageMetadata(
   options?: { noIndex?: boolean; keywords?: string[]; image?: string; imageAlt?: string },
 ): Metadata {
   const url = pageUrl(path);
+  const resolvedTitle = normaliseTitle(title);
   const image = options?.image ?? getSocialImagePath(path);
-  const imageAlt = options?.imageAlt ?? `${title} — ${siteName}`;
+  const imageAlt = options?.imageAlt ?? `${resolvedTitle} — ${siteName}`;
 
   return {
-    title,
+    title: { absolute: resolvedTitle },
     description,
     keywords: options?.keywords,
     alternates: { canonical: url },
     openGraph: {
-      title,
+      title: resolvedTitle,
       description,
       url,
       siteName,
@@ -74,7 +79,7 @@ export function buildPageMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: resolvedTitle,
       description,
       images: [image],
     },
