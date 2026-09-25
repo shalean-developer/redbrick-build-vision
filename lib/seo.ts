@@ -61,7 +61,7 @@ export function buildPageMetadata(
   const url = pageUrl(path);
   const resolvedTitle = normaliseTitle(title);
   const image = options?.image ?? getSocialImagePath(path);
-  const imageAlt = options?.imageAlt ?? `${resolvedTitle} — ${siteName}`;
+  const imageAlt = options?.imageAlt ?? resolvedTitle;
 
   return {
     title: { absolute: resolvedTitle },
