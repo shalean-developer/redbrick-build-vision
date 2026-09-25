@@ -115,7 +115,7 @@ export default function BellvilleLocationPage() {
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">These services are available in Bellville as part of Team Edlick&apos;s Cape Town coverage. Trade-specific pricing, process and FAQs remain on the Cape Town service pages.</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {constructionServices.map((service) => (
-                <Link key={service.slug} href={`/services/${service.slug}/cape-town`} className="group rounded-lg border bg-background p-6 shadow-card hover:border-primary/45 hover:shadow-elevated transition-all text-left">
+                <Link key={service.slug} href={`/services/${service.slug}`} className="group rounded-lg border bg-background p-6 shadow-card hover:border-primary/45 hover:shadow-elevated transition-all text-left">
                   <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{service.name} in Bellville</h3>
                   <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{serviceTeasers[service.slug] ?? service.summary}</p>
                   <span className="mt-4 inline-flex text-sm font-medium text-primary">View Cape Town service guide →</span>
