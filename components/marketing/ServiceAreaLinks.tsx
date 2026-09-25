@@ -31,7 +31,7 @@ export function ServiceAreaLinks() {
           {spotlight.map(({ serviceSlug, city }) => {
             const svc = getConstructionService(serviceSlug);
             if (!svc) return null;
-            const href = `/services/${serviceSlug}/${city}`;
+            const href = `/services/${serviceSlug}`;
             const cityLabel = cityName(city);
             const label = `${svc.name} services in ${cityLabel}`;
             return (
