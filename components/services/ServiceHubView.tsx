@@ -48,7 +48,7 @@ export function ServiceHubView({
   capeTownSlug,
   suburbs,
 }: Props) {
-  const cityLandingHref = `/services/${service.slug}/${capeTownSlug}`;
+  const cityLandingHref = `/locations/${capeTownSlug}`;
   const heroSrc = hubHeroSrc[service.slug] ?? assets.serviceConstruction;
   const suburbText =
     suburbs.length <= 2
@@ -86,7 +86,7 @@ export function ServiceHubView({
               <p className="text-sm text-muted-foreground leading-relaxed border-l-4 border-primary/40 pl-4">{hub.trustLine}</p>
               <p className="mt-6">
                 <Link href={cityLandingHref} className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                  {service.name} in Cape Town: pricing, suburbs &amp; FAQs →
+                  Explore the Cape Town service area →
                 </Link>
               </p>
             </div>
@@ -163,7 +163,7 @@ export function ServiceHubView({
           </p>
           <p className="mb-6">
             <Link href={cityLandingHref} className="inline-flex font-semibold text-primary hover:underline">
-              {hub.locationCtaLabel ?? `Open the full ${service.name} in Cape Town page (pricing, process & FAQs) →`}
+              {hub.locationCtaLabel ?? "Explore the Cape Town service area →"}
             </Link>
           </p>
           <p className="text-sm text-muted-foreground">
