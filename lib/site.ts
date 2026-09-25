@@ -4,13 +4,14 @@ export const siteOrigin = "https://teamedlick.co.za";
 export const siteName = "Team Edlick Construction";
 
 export const businessAddress = {
-  streetAddress: "The Watershed, D03 Dock Road",
-  addressLocality: "Cape Town",
+  streetAddress: "17 Postma St",
+  addressLocality: "Bellville",
   addressRegion: "Western Cape",
+  postalCode: "7530",
   addressCountry: "ZA",
   displayLines: [
-    "The Watershed, D03 Dock Road",
-    "Waterfront, Cape Town",
+    "17 Postma St",
+    "Bellville, Cape Town, 7530",
     "Western Cape, South Africa",
   ],
 } as const;
