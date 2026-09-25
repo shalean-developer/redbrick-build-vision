@@ -16,7 +16,8 @@ export const businessAddress = {
   ],
 } as const;
 
-export const businessPhones = ["+27685943091", "+27827587466"] as const;
+export const primaryBusinessPhone = "+27685943091";
+export const secondaryBusinessPhone = "+27827587466";
 
 export const defaultDescription =
   "Team Edlick Construction delivers construction, tiling, renovations, waterproofing, and paving across Cape Town and surrounding suburbs, Western Cape focus with clear quoting and coordinated trades.";
