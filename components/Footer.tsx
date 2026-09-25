@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, MapPin } from "lucide-react";
 import { TeamEdlickLogo } from "@/components/brand/TeamEdlickLogo";
+import { businessAddress } from "@/lib/site";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -94,9 +95,9 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 text-primary shrink-0" aria-hidden />
                 <p className="opacity-95 leading-relaxed">
-                  The Watershed, D03 Dock Road
-                  <br />
-                  Waterfront, South Africa
+                  {businessAddress.displayLines.map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
                 </p>
               </li>
             </ul>
