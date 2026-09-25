@@ -5,13 +5,20 @@ import { canIndexLocation, canPublishServiceLocation } from "@/lib/location-seo"
 import { locationPages } from "@/lib/locations";
 import { siteOrigin } from "@/lib/site";
 
-const staticPaths: { path: string; priority: number; locationSlug?: string }[] = [
-  { path: "/", priority: 1 },
+const seoCloseoutDate = "2026-09-25";
+
+const staticPaths: {
+  path: string;
+  priority: number;
+  locationSlug?: string;
+  lastModified?: string;
+}[] = [
+  { path: "/", priority: 1, lastModified: seoCloseoutDate },
   { path: "/services", priority: 0.88 },
-  { path: "/locations", priority: 0.86 },
-  { path: "/locations/bellville", priority: 0.78, locationSlug: "bellville" },
-  { path: "/projects", priority: 0.82 },
-  { path: "/contact", priority: 0.84 },
+  { path: "/locations", priority: 0.86, lastModified: seoCloseoutDate },
+  { path: "/locations/bellville", priority: 0.78, locationSlug: "bellville", lastModified: seoCloseoutDate },
+  { path: "/projects", priority: 0.82, lastModified: seoCloseoutDate },
+  { path: "/contact", priority: 0.84, lastModified: seoCloseoutDate },
   { path: "/about", priority: 0.78 },
   { path: "/careers", priority: 0.72 },
   { path: "/blog", priority: 0.76 },
@@ -23,10 +30,11 @@ const staticPaths: { path: string; priority: number; locationSlug?: string }[] =
 export default function sitemap(): MetadataRoute.Sitemap {
   const main = staticPaths
     .filter(({ locationSlug }) => !locationSlug || canIndexLocation(locationSlug))
-    .map(({ path, priority }) => ({
+    .map(({ path, priority, lastModified }) => ({
       url: path === "/" ? siteOrigin : `${siteOrigin}${path}`,
       changeFrequency: "monthly" as const,
       priority,
+      ...(lastModified ? { lastModified } : {}),
     }));
 
   const blog = blogPosts.map((post) => ({
@@ -41,12 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteOrigin}/locations/${loc.city}`,
       changeFrequency: "monthly" as const,
       priority: loc.city === "cape-town" ? 0.9 : 0.75,
+      ...(loc.city === "cape-town" ? { lastModified: seoCloseoutDate } : {}),
     }));
 
   const serviceHubs = constructionServices.map((s) => ({
     url: `${siteOrigin}/services/${s.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.92,
+    lastModified: seoCloseoutDate,
   }));
 
   // Cape Town service intent is consolidated on /services/[serviceSlug].
