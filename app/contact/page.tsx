@@ -4,10 +4,15 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata(
   "/contact",
-  "Contact Us | Team Edlick Construction - Get a Free Quote",
-  "Contact Team Edlick Construction for a free consultation. Call +27 68 594 3091 or +27 82 758 7466. Located at The Watershed, Waterfront, South Africa.",
+  "Contact Team Edlick Construction | Cape Town",
+  "Contact Team Edlick Construction for a quote. Call +27 68 594 3091 or +27 82 758 7466. Office: The Watershed, D03 Dock Road, Waterfront, Cape Town, Western Cape.",
   {
-    keywords: ["contact Team Edlick", "construction quote", "free consultation", "construction services South Africa", "get in touch"],
+    keywords: [
+      "contact Team Edlick",
+      "construction quote Cape Town",
+      "construction company Waterfront Cape Town",
+      "building contractor Cape Town",
+    ],
   },
 );
 

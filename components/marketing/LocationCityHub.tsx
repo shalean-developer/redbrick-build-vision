@@ -80,6 +80,7 @@ export function LocationCityHub({ loc, services }: Props) {
   const proof = proofForCity[loc.city] ?? defaultProofRows(loc.name);
   const suburbParagraph = formatSuburbList(loc.focusSuburbs);
   const serviceLocationEligible = canPublishServiceLocation(loc.city);
+  const useCanonicalServiceHubs = loc.city === "cape-town";
 
   return (
     <main className="flex-grow pb-16">
@@ -117,13 +118,18 @@ export function LocationCityHub({ loc, services }: Props) {
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-3">Our services in {loc.name}</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            {serviceLocationEligible
-              ? `Every card opens a local guide with suburbs, pricing context, and FAQs for that trade in ${loc.name}.`
-              : `Detailed trade guidance stays on the main service pages until this location has enough evidence for service-by-location pages.`}
+            {useCanonicalServiceHubs
+              ? `Each card opens the canonical Cape Town service guide so ranking signals stay consolidated on one URL per trade.`
+              : serviceLocationEligible
+                ? `Every card opens an evidence-approved local guide for that trade in ${loc.name}.`
+                : `Detailed trade guidance stays on the main service pages until this location has enough evidence for service-by-location pages.`}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((s) => {
-              const href = serviceLocationEligible ? `/services/${s.slug}/${loc.city}` : `/services/${s.slug}`;
+              const href =
+                useCanonicalServiceHubs || !serviceLocationEligible
+                  ? `/services/${s.slug}`
+                  : `/services/${s.slug}/${loc.city}`;
               return (
                 <Link
                   key={s.slug}
@@ -137,7 +143,7 @@ export function LocationCityHub({ loc, services }: Props) {
                     {teaserBySlug[s.slug] ?? `${s.summary.split(".")[0]}.`}
                   </p>
                   <span className="mt-4 inline-flex text-sm font-medium text-primary">
-                    {serviceLocationEligible ? "View local page →" : "View service guide →"}
+                    {useCanonicalServiceHubs || !serviceLocationEligible ? "View service guide →" : "View local page →"}
                   </span>
                 </Link>
               );
@@ -200,7 +206,7 @@ export function LocationCityHub({ loc, services }: Props) {
                   <li>Whether plumbing, electrical, tiling, painting, and making-good must be sequenced together</li>
                 </ul>
                 <p className="mt-5 text-sm text-muted-foreground">
-                  For trade-specific pricing context, see our <Link href="/services/tiling/cape-town" className="text-primary font-medium hover:underline">tiling</Link>, <Link href="/services/renovations/cape-town" className="text-primary font-medium hover:underline">renovation</Link>, and <Link href="/services/waterproofing/cape-town" className="text-primary font-medium hover:underline">waterproofing</Link> guides.
+                  For trade-specific pricing context, see our <Link href="/services/tiling" className="text-primary font-medium hover:underline">tiling</Link>, <Link href="/services/renovations" className="text-primary font-medium hover:underline">renovation</Link>, and <Link href="/services/waterproofing" className="text-primary font-medium hover:underline">waterproofing</Link> guides.
                 </p>
               </div>
               <div className="rounded-xl border bg-background p-7 shadow-card">

@@ -1,20 +1,36 @@
-import { siteName, siteOrigin, defaultDescription } from "@/lib/site";
+import {
+  businessAddress,
+  businessPhones,
+  defaultDescription,
+  siteName,
+  siteOrigin,
+} from "@/lib/site";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "GeneralContractor",
   "@id": `${siteOrigin}/#organization`,
   name: siteName,
   alternateName: "Team Edlick PVT Ltd",
   url: siteOrigin,
   description: defaultDescription,
   logo: `${siteOrigin}/brand/teamedlick-logo.png`,
+  telephone: businessPhones,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "The Watershed, D03 Dock Road",
-    addressLocality: "Cape Town",
-    addressRegion: "Western Cape",
-    addressCountry: "ZA",
+    streetAddress: businessAddress.streetAddress,
+    addressLocality: businessAddress.addressLocality,
+    addressRegion: businessAddress.addressRegion,
+    addressCountry: businessAddress.addressCountry,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Cape Town",
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: "Western Cape",
+      containedInPlace: { "@type": "Country", name: "South Africa" },
+    },
   },
   contactPoint: [
     {

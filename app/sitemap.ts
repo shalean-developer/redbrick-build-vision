@@ -46,16 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceHubs = constructionServices.map((s) => ({
     url: `${siteOrigin}/services/${s.slug}`,
     changeFrequency: "monthly" as const,
-    priority: 0.87,
+    priority: 0.92,
   }));
 
+  // Cape Town service intent is consolidated on /services/[serviceSlug].
+  // Only future evidence-approved non-Cape-Town combinations may enter the sitemap.
   const serviceLocations = constructionServices.flatMap((s) =>
     locationPages
-      .filter((loc) => canPublishServiceLocation(loc.city))
+      .filter((loc) => loc.city !== "cape-town" && canPublishServiceLocation(loc.city))
       .map((loc) => ({
         url: `${siteOrigin}/services/${s.slug}/${loc.city}`,
         changeFrequency: "monthly" as const,
-        priority: 0.92,
+        priority: 0.86,
       })),
   );
 
