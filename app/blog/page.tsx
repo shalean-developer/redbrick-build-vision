@@ -38,7 +38,13 @@ export default function BlogIndexPage() {
                   {post.title}
                 </Link>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{post.description}</p>
-                <span className="mt-3 inline-block text-sm font-medium text-primary">Read guide →</span>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+                  aria-label={`Read ${post.title}`}
+                >
+                  Read guide →
+                </Link>
               </li>
             ))}
           </ul>
