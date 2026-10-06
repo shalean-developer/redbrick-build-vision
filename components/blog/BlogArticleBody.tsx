@@ -17,7 +17,7 @@ export function BlogArticleBody({ slug }: Props) {
           <BlogInlineCta
             title="Get a tiling quote in Cape Town, fast turnaround"
             description="We aim to respond within one business day once scope photos land. Local hub shows FAQs, process, and indicative m² brackets."
-            href="/services/tiling/cape-town"
+            href="/services/tiling"
             linkLabel="Open tiling in Cape Town"
           />
           <p>
@@ -40,7 +40,7 @@ export function BlogArticleBody({ slug }: Props) {
               a measured site visit
             </Link>{" "}
            , or jump straight to our{" "}
-            <Link href="/services/tiling/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/tiling" className="text-primary font-medium hover:underline">
               tiling services in Cape Town
             </Link>{" "}
             hub for local proof points and programme notes.
@@ -68,7 +68,7 @@ export function BlogArticleBody({ slug }: Props) {
           <BlogInlineCta
             title="Book a bathroom renovation quote, Cape Town metro"
             description="One brief ties waterproofing, tiling, and plumbing sequencing so budgets don’t fracture across trades."
-            href="/services/renovations/cape-town"
+            href="/services/renovations"
             linkLabel="Start with renovations in Cape Town"
           />
           <h2 className="text-2xl font-bold text-foreground">Link the trades once</h2>
@@ -78,7 +78,7 @@ export function BlogArticleBody({ slug }: Props) {
               one contact form
             </Link>{" "}
             so programmes align. See how we structure{" "}
-            <Link href="/services/renovations/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/renovations" className="text-primary font-medium hover:underline">
               renovations in Cape Town
             </Link>{" "}
            , from Claremont and Rondebosch to Milnerton and Table View.
@@ -108,7 +108,7 @@ export function BlogArticleBody({ slug }: Props) {
           <BlogPartnerReferral variant="shalean-cleaning" context="handover" />
           <p>
             Need a programme for a multi-trade scope? Start with{" "}
-            <Link href="/services/construction/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/construction" className="text-primary font-medium hover:underline">
               construction coordination in Cape Town
             </Link>{" "}
            , then confirm milestones on{" "}
@@ -150,7 +150,7 @@ export function BlogArticleBody({ slug }: Props) {
           />
           <p>
             We document hold-points so finishes do not bury defects. See how we structure{" "}
-            <Link href="/services/tiling/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/tiling" className="text-primary font-medium hover:underline">
               tiling in Cape Town
             </Link>
             , then{" "}
@@ -173,21 +173,21 @@ export function BlogArticleBody({ slug }: Props) {
           <BlogInlineCta
             title="Planning decking or outdoor paving in Cape Town?"
             description="We coordinate drainage, corrosion-class fixings, and waterproofing interfaces, see scope packs and photos on the local hub."
-            href="/services/decking-flooring/cape-town"
+            href="/services/decking-flooring"
             linkLabel="Get decking & flooring guidance, Cape Town"
           />
           <h2 className="text-2xl font-bold text-foreground">Decking and outdoor circulation</h2>
           <p>
             External timber and composites must respect drainage, corrosion class of fixings, and maintenance appetite.
             Explore{" "}
-            <Link href="/services/decking-flooring/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/decking-flooring" className="text-primary font-medium hover:underline">
               decking &amp; flooring in Cape Town
             </Link>{" "}
            , coastal fixes and UV-stable detailing where it matters.
           </p>
           <p>
             Still comparing?{" "}
-            <Link href="/services/paving/cape-town" className="text-primary font-medium hover:underline">
+            <Link href="/services/paving" className="text-primary font-medium hover:underline">
               Paving
             </Link>{" "}
             often pairs with outdoor room transitions, brief us on{" "}
