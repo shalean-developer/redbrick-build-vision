@@ -7,10 +7,10 @@ import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = buildPageMetadata(
   "/blog",
-  "Construction Insights & Updates",
-  "Articles on construction, renovations, and projects from Team Edlick Construction in South Africa.",
+  "Cape Town Construction Cost Guides & Renovation Advice",
+  "Practical Cape Town construction cost guides, renovation timelines, tiling, paving, waterproofing, painting and plumbing advice from Team Edlick.",
   {
-    keywords: ["construction blog South Africa", "renovation tips", "building contractor news"],
+    keywords: ["construction cost Cape Town", "renovation costs Cape Town", "tiling cost Cape Town", "paving cost Cape Town"],
   },
 );
 
@@ -19,21 +19,26 @@ export default function BlogIndexPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-24 max-w-3xl">
-        <h1 className="mb-4">Blog</h1>
-        <p className="text-muted-foreground mb-10">
-          Cost guides, renovation timelines, and specification pitfalls, each article links through to local service hubs and
-          contact.
+        <p className="text-sm font-medium text-primary mb-2">Cape Town construction guides</p>
+        <h1 className="mb-4">Construction cost guides & practical advice</h1>
+        <p className="text-muted-foreground text-lg mb-5">
+          Use these guides to understand the variables that move construction and renovation quotes in Cape Town before you
+          compare contractors or book a site visit.
+        </p>
+        <p className="text-sm text-muted-foreground mb-10">
+          Looking for a contractor rather than research? Browse our <Link href="/services" className="text-primary font-medium hover:underline">construction services</Link>, the <Link href="/locations/cape-town" className="text-primary font-medium hover:underline">Cape Town service area</Link>, or <Link href="/contact" className="text-primary font-medium hover:underline">request a quote</Link>.
         </p>
         {blogPosts.length === 0 ? (
           <p className="text-muted-foreground">New articles will appear here soon.</p>
         ) : (
-          <ul className="space-y-4">
+          <ul className="space-y-5">
             {blogPosts.map((post) => (
-              <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="text-primary font-medium hover:underline">
+              <li key={post.slug} className="rounded-lg border bg-card p-5 shadow-sm">
+                <Link href={`/blog/${post.slug}`} className="text-primary font-semibold text-lg hover:underline">
                   {post.title}
                 </Link>
-                <p className="text-sm text-muted-foreground">{post.description}</p>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{post.description}</p>
+                <span className="mt-3 inline-block text-sm font-medium text-primary">Read guide →</span>
               </li>
             ))}
           </ul>
