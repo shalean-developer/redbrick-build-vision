@@ -123,39 +123,69 @@ export function BlogArticleBody({ slug }: Props) {
     case "tiling-mistakes-to-avoid":
       return (
         <div className="prose prose-lg max-w-none space-y-6 text-muted-foreground">
-          <ol className="list-decimal pl-6 space-y-3">
+          <p>
+            Most tiling failures start before the first tile is fixed. Substrate condition, waterproofing, layout,
+            movement and curing all affect whether the finished surface stays flat, watertight and durable.
+          </p>
+          <h2 className="text-2xl font-bold text-foreground">7 tiling mistakes that cause callbacks</h2>
+          <ol className="list-decimal pl-6 space-y-4">
             <li>
-              <strong className="text-foreground">Skipping flatness checks</strong>, large formats expose substrate waves.
+              <strong className="text-foreground">Skipping flatness checks.</strong> Large-format tiles amplify substrate
+              waves, lipping and hollow spots. Check and correct the base before adhesive is mixed.
             </li>
             <li>
-              <strong className="text-foreground">Closing in before flood tests</strong>, wet areas need discipline.
+              <strong className="text-foreground">Closing wet areas before waterproofing is proven.</strong> Showers,
+              balconies and other wet zones need the specified membrane details and hold-points before tiles hide them.
             </li>
             <li>
-              <strong className="text-foreground">Wrong adhesive class</strong>, interiors versus exteriors versus immersed
-              zones.
+              <strong className="text-foreground">Using the wrong adhesive or grout system.</strong> Interior walls,
+              exterior paving interfaces, large porcelain and persistently wet areas do not all need the same products.
             </li>
             <li>
-              <strong className="text-foreground">No movement joints</strong>, especially on solar-facing façades.
+              <strong className="text-foreground">Ignoring movement joints.</strong> Long runs, solar-facing surfaces and
+              changes in substrate need movement accommodation rather than rigidly locking every joint.
             </li>
             <li>
-              <strong className="text-foreground">Mismatched billing expectations</strong>, pattern matches and niche cuts
-              consume time.
+              <strong className="text-foreground">Starting without a layout plan.</strong> Poor datum lines create narrow
+              cuts at visible edges, misaligned niches and awkward transitions between rooms.
+            </li>
+            <li>
+              <strong className="text-foreground">Grouting or loading the surface too early.</strong> Adhesives and
+              waterproofing systems need their stated curing windows; rushing the programme can trap moisture and weaken
+              the installation.
+            </li>
+            <li>
+              <strong className="text-foreground">Underestimating detail work in the quote.</strong> Patterns, mitred
+              corners, trims, niches, falls and making-good all add labour and should be agreed before work starts.
             </li>
           </ol>
           <BlogInlineCta
             title="Stop tiling defects before they’re tiled over"
-            description="Book a walkthrough on substrate flatness, adhesive class, and flood-test hold-points, Cape Town metro crews."
+            description="Book a walkthrough on substrate flatness, adhesive class, waterproofing hold-points and layout before finishes close in."
             href="/contact"
             linkLabel="Book a tiling QA walkthrough"
           />
+          <h2 className="text-2xl font-bold text-foreground">How Team Edlick reduces tiling risk</h2>
           <p>
-            We document hold-points so finishes do not bury defects. See how we structure{" "}
+            We scope preparation, wet-area interfaces and layout before installation, then keep critical hold-points visible
+            until they are ready to close. For Cape Town-specific scope and pricing factors, see our{" "}
             <Link href="/services/tiling" className="text-primary font-medium hover:underline">
-              tiling in Cape Town
+              tiling services in Cape Town
+            </Link>{" "}
+            and the{" "}
+            <Link href="/blog/cost-of-tiling-cape-town" className="text-primary font-medium hover:underline">
+              Cape Town tiling cost guide
             </Link>
-            , then{" "}
+            .
+          </p>
+          <p>
+            If the tiling forms part of a bathroom or multi-trade upgrade, compare the{" "}
+            <Link href="/services/renovations" className="text-primary font-medium hover:underline">
+              renovations service
+            </Link>{" "}
+            before sending one combined brief through{" "}
             <Link href="/contact" className="text-primary font-medium hover:underline">
-              request a walkthrough
+              the quote form
             </Link>
             .
           </p>

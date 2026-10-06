@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata(
   "/services",
-  "Our Services | Team Edlick Construction - Complete Building Solutions",
-  "Explore Team Edlick's comprehensive construction services: building, tiling, painting, decking, paving, waterproofing, renovations, and plumbing across South Africa.",
+  "Construction Services Cape Town | Team Edlick",
+  "Explore construction, tiling, painting, decking, paving, waterproofing, renovations and plumbing services across Cape Town and surrounding suburbs.",
   {
     keywords: [
       "construction services",
@@ -17,7 +17,8 @@ export const metadata: Metadata = buildPageMetadata(
       "renovations",
       "plumbing",
       "carpentry",
-      "South Africa",
+      "Cape Town",
+      "Western Cape",
     ],
   },
 );

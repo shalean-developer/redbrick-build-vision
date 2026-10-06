@@ -6,6 +6,7 @@ import { locationPages } from "@/lib/locations";
 import { siteOrigin } from "@/lib/site";
 
 const seoCloseoutDate = "2026-09-25";
+const seoRecoveryDate = "2026-10-06";
 
 const staticPaths: {
   path: string;
@@ -13,15 +14,15 @@ const staticPaths: {
   locationSlug?: string;
   lastModified?: string;
 }[] = [
-  { path: "/", priority: 1, lastModified: seoCloseoutDate },
-  { path: "/services", priority: 0.88 },
+  { path: "/", priority: 1, lastModified: seoRecoveryDate },
+  { path: "/services", priority: 0.88, lastModified: seoRecoveryDate },
   { path: "/locations", priority: 0.86, lastModified: seoCloseoutDate },
   { path: "/locations/bellville", priority: 0.78, locationSlug: "bellville", lastModified: seoCloseoutDate },
-  { path: "/projects", priority: 0.82, lastModified: seoCloseoutDate },
+  { path: "/projects", priority: 0.82, lastModified: seoRecoveryDate },
   { path: "/contact", priority: 0.84, lastModified: seoCloseoutDate },
   { path: "/about", priority: 0.78 },
   { path: "/careers", priority: 0.72 },
-  { path: "/blog", priority: 0.76 },
+  { path: "/blog", priority: 0.76, lastModified: seoRecoveryDate },
   { path: "/partners/shalean-cleaning-services", priority: 0.62 },
   { path: "/privacy-policy", priority: 0.5 },
   { path: "/terms-conditions", priority: 0.5 },
@@ -41,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteOrigin}/blog/${post.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.68,
+    ...(post.slug === "tiling-mistakes-to-avoid" ? { lastModified: seoRecoveryDate } : {}),
   }));
 
   const locations = locationPages

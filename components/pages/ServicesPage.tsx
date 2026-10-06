@@ -89,16 +89,20 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <p className="text-lg text-muted-foreground">
-              At Team Edlick Construction, we offer a full spectrum of construction services across South Africa. Our
-              experienced team delivers quality workmanship, innovative solutions, and exceptional service on every
-              project, no matter the size or complexity.
+              Team Edlick coordinates construction and trade services across Cape Town and surrounding suburbs. Each
+              service hub explains typical scope, local pricing factors, process, related trades and the information we
+              need to prepare a site-specific quote.
             </p>
             <p className="text-sm text-muted-foreground mt-6">
-              Need city-targeted SEO pages? Open each trade hub, then jump to Cape Town, example:{" "}
-              <Link href="/services/tiling/cape-town" className="text-primary hover:underline">
-                tiling in Cape Town
-              </Link>
-              .
+              Start with the trade you need, or review our{" "}
+              <Link href="/locations/cape-town" className="text-primary hover:underline">
+                Cape Town construction hub
+              </Link>{" "}
+              and{" "}
+              <Link href="/locations/bellville" className="text-primary hover:underline">
+                Bellville service area
+              </Link>{" "}
+              for local quoting context.
             </p>
             <nav className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2" aria-label="Service hubs">
               {constructionServices.map((s) => (
@@ -114,6 +118,29 @@ export default function ServicesPage() {
               <ServiceCard key={index} {...service} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 border-y bg-background">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-center mb-5">How to choose the right service</h2>
+          <div className="grid gap-5 md:grid-cols-3 text-sm text-muted-foreground">
+            <div className="rounded-lg border p-5">
+              <h3 className="font-semibold text-foreground mb-2">Single-trade work</h3>
+              <p>Use the tiling, painting, paving, waterproofing, flooring or plumbing hub when the required outcome is already clear.</p>
+            </div>
+            <div className="rounded-lg border p-5">
+              <h3 className="font-semibold text-foreground mb-2">Multi-trade upgrades</h3>
+              <p>Use renovations when bathrooms, kitchens or whole-property work requires several trades to be sequenced together.</p>
+            </div>
+            <div className="rounded-lg border p-5">
+              <h3 className="font-semibold text-foreground mb-2">Building & structural scope</h3>
+              <p>Use construction for extensions, structural alterations, shells and coordinated building work through handover.</p>
+            </div>
+          </div>
+          <p className="text-center text-sm text-muted-foreground mt-6">
+            Not sure which route fits? <Link href="/contact" className="text-primary font-medium hover:underline">Send photos and the required outcome</Link> and we&apos;ll direct the brief.
+          </p>
         </div>
       </section>
 

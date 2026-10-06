@@ -14,19 +14,19 @@ const PREVIEW: {
     src: gallery.e02,
     alt: "Tiling service image",
     caption: "Tiling in Cape Town",
-    href: "/services/tiling/cape-town",
+    href: "/services/tiling",
   },
   {
     src: gallery.e07,
     alt: "Renovation service image",
     caption: "Renovations in Cape Town",
-    href: "/services/renovations/cape-town",
+    href: "/services/renovations",
   },
   {
     src: gallery.e06,
     alt: "Waterproofing service image",
     caption: "Waterproofing & wet areas",
-    href: "/services/waterproofing/cape-town",
+    href: "/services/waterproofing",
   },
 ];
 
@@ -37,8 +37,8 @@ export function HomeProofSection() {
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h2 className="mb-3">Explore Team Edlick services</h2>
           <p className="text-muted-foreground">
-            Review service scope information for Cape Town, then share your site details for a structured quote. Verified
-            project case studies and customer testimonials will be published separately as evidence becomes available.
+            Review service scope information for Cape Town, then share your site details for a structured quote. You can
+            also browse verified Team Edlick portfolio evidence before choosing the trade that fits your project.
           </p>
         </div>
 
