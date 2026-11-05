@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 891 398" role="img" aria-labelledby="title desc">
+  <title id="title">Team Edlick PVT LTD</title>
+  <desc id="desc">Team Edlick logo with black and red roof mark, company name and Building Homes to Envy tagline.</desc>
+  <rect width="891" height="398" fill="#fff"/>
+  <g transform="translate(158 10)">
+    <polygon points="0,190 155,0 205,62 96,190" fill="#000"/>
+    <polygon points="165,0 260,0 425,190 325,190" fill="#ef0000"/>
+    <polygon points="480,130 585,0 675,0 525,190" fill="#000"/>
+    <g fill="#ef0000" transform="translate(180 140)">
+      <rect width="21" height="21"/>
+      <rect x="28" width="21" height="21"/>
+      <rect y="28" width="21" height="21"/>
+      <rect x="28" y="28" width="21" height="21"/>
+    </g>
+  </g>
+  <text x="445.5" y="304" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" letter-spacing="2" fill="#ef0000">TEAM EDLICK PVT LTD</text>
+  <text x="445.5" y="378" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" letter-spacing="1" fill="#000">BUILDING HOMES TO ENVY</text>
+</svg>
