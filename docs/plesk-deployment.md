@@ -40,3 +40,28 @@ Do not delete Vercel or the previous Plesk files until the replacement is verifi
 `npm ci`, `npm run build`, then `PORT=3100 node server.cjs` runs the same startup
 entry point locally. Contact delivery testing sends real email and must use an
 explicitly authorized test submission.
+
+## Migration checkpoint — 12 November 2026
+
+- Existing Plesk Git repository points to `shalean-developer/faraios`, master,
+  deploying automatically into `/httpdocs`. It was not modified.
+- Added the correct public HTTPS repository with manual deployment to
+  `/teamedlick-app`, branch `deploy/plesk-20261112`.
+- Deployed application revision `bf38bef46f0b8b8c3136aa1897259984867ba35a`.
+- Selected Node.js 24.22.2, production, application root `/teamedlick-app`,
+  document root `/teamedlick-app/public`, startup file `server.cjs`.
+- Plesk clean install succeeded (355 packages). Initial build failed with EAGAIN
+  after requesting 19 workers; the two-worker configuration then built all 46
+  pages successfully. Node.js enabled, idle pending first request.
+- Certificate named `Lets Encrypt teamedlick.co.za` expired 26 September 2026;
+  apex and www reported Not Secured. Renewal has not been performed.
+- Original apex A record: `216.198.79.1`, TTL 3600, record ID 95214. Existing www
+  CNAME points to `teamedlick.co.za`. No website AAAA record was shown.
+- Edited apex A record to `104.238.222.122` and submitted OK; the DNS zone then
+  required Update. Clicked Update, but browser connection stalled before a
+  post-save observation. CHECK WHETHER APPLIED before making further changes.
+- Mail and verification DNS records were not edited. Vercel was not removed.
+- Outstanding: confirm applied/public DNS and authoritative nameservers, renew
+  SSL, verify Passenger origin/public HTTPS, configure RESEND_API_KEY securely,
+  and verify contact delivery with an authorized test. The Allanux client-area
+  session redirected to login when opening Domains.
