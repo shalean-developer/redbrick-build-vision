@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Keep build workers within shared Plesk hosting process limits.
+  experimental: { cpus: 2 },
 
   /** Legacy and competing URLs permanently consolidate into their canonical replacements. */
   async redirects() {
@@ -55,3 +57,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
