@@ -65,3 +65,24 @@ explicitly authorized test submission.
   SSL, verify Passenger origin/public HTTPS, configure RESEND_API_KEY securely,
   and verify contact delivery with an authorized test. The Allanux client-area
   session redirected to login when opening Domains.
+
+## Public DNS and registry blocker confirmed
+
+On 12 November 2026:
+
+- Verified the saved Plesk apex A record is `104.238.222.122`, with www CNAME
+  pointing to apex. The previous Update completed.
+- Local hosting resolver sees those records, but independent Cloudflare
+  (1.1.1.1) and Google (8.8.8.8) resolvers return ENOTFOUND for public A and NS.
+- With owner consent to Let's Encrypt terms, attempted apex + www HTTP-01 SSL
+  issuance. It failed with ACME DNS NXDOMAIN, not an application build error.
+- Queried the official CO.ZA registry WHOIS server
+  `coza-whois.registry.net.za:43` for `teamedlick.co.za`:
+  registrar Absolute Hosting (`https://absolutehosting.co.za/`), registry expiry
+  `2026-10-24T19:04:30Z`, updated `2026-11-03T19:15:12Z`;
+  statuses inactive, pendingDelete, serverHold, clientTransferProhibited and
+  serverTransferProhibited. Registered nameservers are ns1/ns2.allanuxweb.co.za.
+- Root blocker is domain registration expiry/hold. Owner must arrange renewal
+  or restoration with Absolute Hosting; no purchase or payment was made.
+- Once registrar restores the domain and public delegation resolves, retry SSL,
+  verify Passenger and public HTTPS, and configure/verify contact email.
